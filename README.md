@@ -17,7 +17,8 @@ opción de poder disfrutar de una película que tenga características diferente
 
 ---
 
-Inicialmente el sistema dispondrá de acceso a una API externa para la obtención de películas, de tal manera
+Inicialmente el sistema dispondrá de acceso a una API externa para la obtención de películas, ya usada anteriormente de donde se pueden
+recuperar mucha información de películas como su nombre, género, descripción, etc. de tal manera
 que se propondrá una serie de preguntas al usuario y mediante diferentes algoritmos realizará una 
 recomendación precisa de una película que con alta probabilidad se asemejará a los gustos del usuario.
 
