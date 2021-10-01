@@ -3,10 +3,13 @@
 
 ***
 
+Para la creación del repositorio, se han realizado lo siguiente:
 
+En la interfaz de GitHub, previamente con cuenta creada, se crea un repositorio nuevo incluyendo todo lo necesario, como la licencia, en este caso _MIT_ porque implica muy pocas limitaciones y
+permite su modificación. Es entonces cuando clonamos el repositorio desde GitHub a local con `git clone 'repositorio'` y ya lo tendríamos en local.
 
-Vamos a realizar la autenticación por _ssh_ ya que es mucho más segura y
-nos va a prmitir tener controlados los dispotivos que modifican nuestros repositorios.
+Ahora para poder modificar el repositorio e incluir archivos, etc. vamos a realizar la autenticación por _ssh_ ya que es mucho más segura y
+nos va a permitir tener controlados los dispotivos que modifican nuestros repositorios.
 
 Como podemos ver en la siguiente imagen, intentamos clonar el repositorio y no nos lo permitirá 
 ya que no hemos incluido las claves necesarias y no está nuestro dispositivo autentificado, si vemos en la carpeta
