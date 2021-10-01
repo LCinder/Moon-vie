@@ -31,7 +31,7 @@ y que realmente puedan ser de utilidad, por lo que se irán incluyendo conforme 
 
 ***
 
-## Creación y configuración del repositorio
+## :rocket: Creación y configuración del repositorio :rocket:
 
 - Enlace al archivo que contiene [toda la configuración del repositorio](https://github.com/LCinder/Moon-vie/blob/master/docs/hito0.md), como la creación del mismo 
 y de la clave pública
