@@ -2,7 +2,7 @@
 ---
 ### Proyecto asignatura Cloud Computing del Máster En Ingeniería Informática de la UGR.
 
-Sistema de recomendacióin de películas basada en gustos del usuario
+Sistema de recomendación de películas basada en gustos del usuario
 
 ***
 
@@ -20,6 +20,10 @@ opción de poder disfrutar de una película que tenga características diferente
 Inicialmente el sistema dispondrá de acceso a una API externa para la obtención de películas, de tal manera
 que se propondrá una serie de preguntas al usuario y mediante diferentes algoritmos realizará una 
 recomendación precisa de una película que con alta probabilidad se asemejará a los gustos del usuario.
+
+La intención de que la aplicación esté disponible en la nube es para garantizar el desacople de la misma de dispositivos móviles
+en forma de aplicación, ya que gracias a no necesitar su instalación permite su acceso de forma efectiva, y
+en su acceso por múltiples usuarios.
 
 Se hace especial énfasis en que este software quiere incluir funcionalidades novedosas que no existan en ninguna plataforma
 y que realmente puedan ser de utilidad, por lo que se irán incluyendo conforme el proyecto avance y se detecten oportunidades de mejora.
