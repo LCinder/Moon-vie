@@ -22,7 +22,6 @@ Esto se hace de la siguiente manera:
 
 
 
-
 ` ssh-keygen -t rsa -b 4096 -C "email@gmail.com"`
 
 Donde _-t rsa_ indica el tipo de algoritmo para generar claves públicas, 
