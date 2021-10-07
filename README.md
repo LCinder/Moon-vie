@@ -6,6 +6,8 @@ Sistema de análisis de películas basado en críticas de usuarios
 
 ***
 
+![](Moon-vie)
+
 ## :pencil2: Descripción :pencil2:
 
 ¿Cuántas veces has intentado ver una película, sólo o en compañía, y has tardado más en decidir la película que en verla?
