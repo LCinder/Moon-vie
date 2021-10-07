@@ -6,7 +6,7 @@ Sistema de análisis de películas basado en críticas de usuarios
 
 ***
 
-![https://github.com/LCinder/Moon-vie/blob/master/docs/img/LOGO%202.png](Moon-vie)
+![Moon-vie](https://github.com/LCinder/Moon-vie/blob/master/docs/img/LOGO%202.png)
 
 ## :pencil2: Descripción :pencil2:
 
