@@ -2,7 +2,7 @@
 ---
 ### Proyecto asignatura Cloud Computing del Máster En Ingeniería Informática de la UGR.
 
-Sistema de recomendación de películas basada en gustos del usuario
+Sistema de análisis de películas basado en críticas de usuarios
 
 ***
 
@@ -17,14 +17,27 @@ opción de poder disfrutar de una película que tenga características diferente
 
 ---
 
-Inicialmente el sistema dispondrá de acceso a una API externa para la obtención de películas, ya usada anteriormente de donde se pueden
-recuperar mucha información de películas como su nombre, género, descripción, etc. de tal manera
-que se propondrá una serie de preguntas al usuario y mediante diferentes algoritmos realizará una 
-recomendación precisa de una película que con alta probabilidad se asemejará a los gustos del usuario.
+Inicialmente el sistema dispondrá de acceso a una [API externa](https://developers.themoviedb.org/) para la obtención de películas, ya usada anteriormente de donde se pueden
+recuperar mucha información de películas como su nombre, género, descripción, y sobretodo **comentarios**, de tal manera
+que obtendrá todos los comentarios (o los más relevantes) de esa película introducida por
+el usuario para, mediante algoritmos de *machine learning,* ser capaz de obtener
+las palabras clave de esa película y dar una idea general de la misma.
+
+### Ejemplo
+El usuario Diego quiere saber si ver la película **TeneT** pero no dispone del tiempo
+o de las ganas suficientes para leerse todos los comentarios y saber si ver esa película o no.
+Introduce en el sistema el nombre de la película y el mismo le responde de la manera:
+- 70% de los usuarios incluyen palabra *fascinante*
+- 10% incluyen palabra *obra de arte*
+- 5% incluyen palabra *thriller*
+- 5% incluyen palabra *compleja*
+
+Con esos datos en apenas segundos, Diego puede decidir si ver la película o elegir otra
+en base a nuevos gustos.
 
 La intención de que la aplicación esté disponible en la nube es para garantizar el desacople de la misma de dispositivos móviles
 en forma de aplicación, ya que gracias a no necesitar su instalación permite su acceso de forma efectiva, y
-en su acceso por múltiples usuarios.
+en su acceso por múltiples usuarios, además de obtener información de la API ya mencionada anteriormente.
 
 Se hace especial énfasis en que este software quiere incluir funcionalidades novedosas que no existan en ninguna plataforma
 y que realmente puedan ser de utilidad, por lo que se irán incluyendo conforme el proyecto avance y se detecten oportunidades de mejora.
