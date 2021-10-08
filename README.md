@@ -23,7 +23,8 @@ y se pretende, **en un sólo vistazo, saber si una película le gustará al usua
 Inicialmente el sistema dispondrá de acceso a una [API externa](https://developers.themoviedb.org/) para la obtención de películas, ya usada anteriormente de donde se pueden
 recuperar mucha información de películas como su nombre, género, descripción, y sobretodo **comentarios**, de tal manera
 que obtendrá todos los comentarios (o los más relevantes) de esa película introducida por
-el usuario para, mediante algoritmos de *machine learning,* ser capaz de obtener
+el usuario para, mediante algoritmos de *machine learning* y/o de minería de textos y 
+métodos de recuperación de información como **[TF-IDF,](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)** ser capaz de obtener
 las palabras clave de esa película y dar una idea general de la misma.
 
 ### Ejemplo
