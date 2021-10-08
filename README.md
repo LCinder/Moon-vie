@@ -15,7 +15,8 @@ Sistema de análisis de películas basado en críticas de usuarios
 
 La idea de este sistema es precisamente suplir ese problema, ya que plataformas como Netflix realizan 
 recomendaciones pero basándose en el seguimiento habitual del usuario, sin dar 
-opción de poder disfrutar de una película que tenga características diferentes a las típicamente recomendadas para el usuario.
+opción de poder disfrutar de una película que tenga características diferentes a las típicamente recomendadas para el usuario
+y se pretende, **en un sólo vistazo, saber si una película le gustará al usuario o no.**
 
 ---
 
@@ -30,9 +31,12 @@ El usuario Diego quiere saber si ver la película **TeneT** pero no dispone del 
 o de las ganas suficientes para leerse todos los comentarios y saber si ver esa película o no.
 Introduce en el sistema el nombre de la película y el mismo le responde de la manera:
 - 70% de los usuarios incluyen palabra *fascinante*
+- 75% incluyen palabra *thriller*
+- 50% incluyen palabra *compleja*
 - 10% incluyen palabra *obra de arte*
-- 5% incluyen palabra *thriller*
-- 5% incluyen palabra *compleja*
+- Las críticas son en general: 
+  - 60% positivas
+  - 40% negativas
 
 Con esos datos en apenas segundos, Diego puede decidir si ver la película o elegir otra
 en base a nuevos gustos.
