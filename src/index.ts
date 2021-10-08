@@ -8,6 +8,7 @@ class Movie {
     private _overview: string;
     private _popularity: number;
     private _voteAverage: number;
+    private _reviews: string[];
 
     constructor(id: number, title: string, overview: string = "", popularity: number = 0, voteAverage: number = 0) {
         this._id = id;
@@ -15,6 +16,15 @@ class Movie {
         this._overview = overview;
         this._popularity = popularity;
         this._voteAverage = voteAverage;
+        this._reviews = [];
+    }
+
+    get reviews(): string[] {
+        return this._reviews;
+    }
+
+    set reviews(value: string[]) {
+        this._reviews = value;
     }
 
     get id(): number {
@@ -57,13 +67,21 @@ class Movie {
         this._voteAverage = value;
     }
 
-
     toString(): string {
-        return `Movie: ${this._title}, con id: ${this.id}, descripcion: ${this.overview}, popularity: ${this.popularity} y votos: ${this.voteAverage}`;
+        return `Movie: ${this._title}, con id: ${this.id}, nº reviews: ${this.reviews.length}, `
+        + `descripcion: ${this.overview}, `
+        + `popularity: ${this.popularity} y votos: ${this.voteAverage}/10`;
     }
+
+    addReview(review: string) {
+        this.reviews.push(review);
+    }
+
 }
 
 
-let movie = new Movie(10, "Tenet");
+let movie = new Movie(10, "TeneT", "", 15000, 7.2);
+movie.addReview("Review 1");
+movie.addReview("Review 2");
 
 console.log(movie.toString());
