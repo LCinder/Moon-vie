@@ -35,8 +35,8 @@ Introduce en el sistema el nombre de la película y el mismo le responde de la m
 - 50% incluyen palabra *compleja*
 - 10% incluyen palabra *obra de arte*
 - Las críticas son en general: 
-  - 60% positivas
-  - 40% negativas
+  - 90% positivas
+  - 10% negativas
 
 Con esos datos en apenas segundos, Diego puede decidir si ver la película o elegir otra
 en base a nuevos gustos.
