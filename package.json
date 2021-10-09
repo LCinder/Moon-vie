@@ -1,0 +1,23 @@
+{
+  "name": "moon-vie",
+  "version": "1.0.0",
+  "description": "A Movie keyword classification",
+  "main": "src/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "tsc && node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LCinder/Moon-vie.git"
+  },
+  "author": "Diego Hernandez Moreno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LCinder/Moon-vie/issues"
+  },
+  "homepage": "https://github.com/LCinder/Moon-vie#readme"
+}
