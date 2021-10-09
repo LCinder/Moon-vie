@@ -86,5 +86,6 @@ movie.overview = "overview";
 movie.popularity = 15000;
 movie.voteAverage = 7.2;
 movie.addReview("Review 1");
+movie.addReview("Review 2");
 
 console.log(movie.toString());
