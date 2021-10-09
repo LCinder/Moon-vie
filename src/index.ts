@@ -10,12 +10,12 @@ class Movie {
     private _voteAverage: number;
     private _reviews: string[];
 
-    constructor(id: number, title: string, overview: string = "", popularity: number = 0, voteAverage: number = 0) {
-        this._id = id;
+    constructor(title: string) {
+        this._id = 0;
         this._title = title
-        this._overview = overview;
-        this._popularity = popularity;
-        this._voteAverage = voteAverage;
+        this._overview = "";
+        this._popularity = 0;
+        this._voteAverage = 0;
         this._reviews = [];
     }
 
@@ -80,7 +80,11 @@ class Movie {
 }
 
 
-let movie = new Movie(10, "TeneT", "", 15000, 7.2);
+let movie = new Movie("TeneT");
+movie.id = 10;
+movie.overview = "overview";
+movie.popularity = 15000;
+movie.voteAverage = 7.2;
 movie.addReview("Review 1");
 movie.addReview("Review 2");
 
