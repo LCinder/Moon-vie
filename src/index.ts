@@ -1,8 +1,10 @@
 
 
+import fetch from "node-fetch";
+import axios from "axios";
+import * as assert from "assert";
 
 class Movie {
-
     private _id: number;
     private _title: string;
     private _overview: string;
@@ -12,7 +14,7 @@ class Movie {
 
     constructor(title: string) {
         this._id = 0;
-        this._title = title
+        this._title = title;
         this._overview = "";
         this._popularity = 0;
         this._voteAverage = 0;
@@ -77,6 +79,11 @@ class Movie {
         this.reviews.push(review);
     }
 
+    async fetchAPI(url: string) {
+        let response: any = await axios.get(url);
+        return response.data;
+    }
+
 }
 
 
@@ -87,5 +94,3 @@ movie.popularity = 15000;
 movie.voteAverage = 7.2;
 movie.addReview("Review 1");
 movie.addReview("Review 2");
-
-console.log(movie.toString());
