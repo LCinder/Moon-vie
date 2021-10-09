@@ -3,3 +3,4 @@ CC.iml
 src/*.js
 node_modules
 package-lock.json
+src/environment.ts
