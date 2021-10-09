@@ -84,6 +84,19 @@ class Movie {
         return response.data;
     }
 
+    convertJSON2Movie(data: any) {
+        let id: number;
+        let overview: string;
+        let popularity: number;
+        let voteAverage: number;
+        let json = data.results[0];
+
+        movie.id = json.id;
+        movie.overview = json.overview;
+        movie.popularity = json.popularity;
+        movie.voteAverage = json.vote_average;
+    }
+
 }
 
 
@@ -94,3 +107,10 @@ movie.popularity = 15000;
 movie.voteAverage = 7.2;
 movie.addReview("Review 1");
 movie.addReview("Review 2");
+
+console.log(movie.toString());
+movie.fetchAPI("").then(res => {
+    movie.convertJSON2Movie(res);
+    console.log(movie.toString());
+});
+
