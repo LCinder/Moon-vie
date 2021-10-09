@@ -91,26 +91,34 @@ class Movie {
         let voteAverage: number;
         let json = data.results[0];
 
-        movie.id = json.id;
-        movie.overview = json.overview;
-        movie.popularity = json.popularity;
-        movie.voteAverage = json.vote_average;
+        this._id = json.id;
+        this._overview = json.overview;
+        this._popularity = json.popularity;
+        this._voteAverage = json.vote_average;
     }
 
 }
 
+async function test1() {
+    const movie1 = new Movie("TeneT");
+    movie1.id = 10;
+    movie1.overview = "overview";
+    movie1.popularity = 15000;
+    movie1.voteAverage = 7.2;
+    movie1.addReview("Review 1");
+    movie1.addReview("Review 2");
 
-let movie = new Movie("TeneT");
-movie.id = 10;
-movie.overview = "overview";
-movie.popularity = 15000;
-movie.voteAverage = 7.2;
-movie.addReview("Review 1");
-movie.addReview("Review 2");
+    console.log(movie1.toString());
+}
 
-console.log(movie.toString());
-movie.fetchAPI("").then(res => {
-    movie.convertJSON2Movie(res);
-    console.log(movie.toString());
-});
+async function test2() {
+    const movie2 = new Movie("Tenet");
+    const data = await movie2.fetchAPI("https://api.themoviedb.org/3/search/movie?api_key=fdb992d2ada5a7f84c5e7349353f36b8&language=en-US&query=tenet&page=1&include_adult=false");
+    await movie2.convertJSON2Movie(data);
+    console.log(movie2.toString());
+}
 
+
+
+test1();
+test2();
