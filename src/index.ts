@@ -2,6 +2,7 @@
 
 import fetch from "node-fetch";
 import axios from "axios";
+import { Environment } from "./environment";
 import * as assert from "assert";
 
 class Movie {
@@ -113,12 +114,10 @@ async function test1() {
 
 async function test2() {
     const movie2 = new Movie("Tenet");
-    const data = await movie2.fetchAPI("https://api.themoviedb.org/3/search/movie?api_key=fdb992d2ada5a7f84c5e7349353f36b8&language=en-US&query=tenet&page=1&include_adult=false");
+    const data = await movie2.fetchAPI("https://api.themoviedb.org/3/search/movie?api_key=" + Environment.API_TMDB + "&language=en-US&query=tenet&page=1&include_adult=false");
     await movie2.convertJSON2Movie(data);
     console.log(movie2.toString());
 }
-
-
 
 test1();
 test2();
