@@ -15,14 +15,16 @@ Sistema de análisis de películas basado en críticas de usuarios
 
 La idea de este sistema es precisamente suplir ese problema, ya que plataformas como Netflix realizan 
 recomendaciones pero basándose en el seguimiento habitual del usuario, sin dar 
-opción de poder disfrutar de una película que tenga características diferentes a las típicamente recomendadas para el usuario.
+opción de poder disfrutar de una película que tenga características diferentes a las típicamente recomendadas para el usuario
+y se pretende, **en un sólo vistazo, saber si una película le gustará al usuario o no.**
 
 ---
 
 Inicialmente el sistema dispondrá de acceso a una [API externa](https://developers.themoviedb.org/) para la obtención de películas, ya usada anteriormente de donde se pueden
 recuperar mucha información de películas como su nombre, género, descripción, y sobretodo **comentarios**, de tal manera
 que obtendrá todos los comentarios (o los más relevantes) de esa película introducida por
-el usuario para, mediante algoritmos de *machine learning,* ser capaz de obtener
+el usuario para, mediante algoritmos de *machine learning* y/o de minería de textos y 
+métodos de recuperación de información como **[TF-IDF,](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)** ser capaz de obtener
 las palabras clave de esa película y dar una idea general de la misma.
 
 ### Ejemplo
@@ -30,9 +32,12 @@ El usuario Diego quiere saber si ver la película **TeneT** pero no dispone del 
 o de las ganas suficientes para leerse todos los comentarios y saber si ver esa película o no.
 Introduce en el sistema el nombre de la película y el mismo le responde de la manera:
 - 70% de los usuarios incluyen palabra *fascinante*
+- 75% incluyen palabra *thriller*
+- 50% incluyen palabra *compleja*
 - 10% incluyen palabra *obra de arte*
-- 5% incluyen palabra *thriller*
-- 5% incluyen palabra *compleja*
+- Las críticas son en general: 
+  - 90% positivas
+  - 10% negativas
 
 Con esos datos en apenas segundos, Diego puede decidir si ver la película o elegir otra
 en base a nuevos gustos.
