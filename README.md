@@ -20,8 +20,9 @@ y se pretende, **en un sólo vistazo, saber si una película le gustará al usua
 
 ---
 
-Inicialmente el sistema dispondrá de acceso a una [API externa](https://developers.themoviedb.org/) para la obtención de películas, ya usada anteriormente de donde se pueden
-recuperar mucha información de películas como su nombre, género, descripción, y sobretodo **comentarios**, de tal manera
+Inicialmente el sistema dispondrá de acceso a varias API externas, como [TheMovieDB](https://developers.themoviedb.org/)
+e [IMDB](https://imdb-api.com/) para la obtención de películas de donde se pueden
+recuperar mucha información de las mismas como su nombre, género, descripción, y sobretodo **comentarios**, de tal manera
 que obtendrá todos los comentarios (o los más relevantes) de esa película introducida por
 el usuario para, mediante algoritmos de *machine learning* y/o de minería de textos y 
 métodos de recuperación de información como **[TF-IDF,](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)** ser capaz de obtener
@@ -55,3 +56,19 @@ y que realmente puedan ser de utilidad, por lo que se irán incluyendo conforme 
 
 - Enlace al archivo que contiene [toda la configuración del repositorio](https://github.com/LCinder/Moon-vie/blob/master/docs/hito0.md), como la creación del mismo 
 y de la clave pública
+
+---
+
+## :chart_with_upwards_trend: Código :chart_with_upwards_trend:
+- Enlace para acceder a la clase [index.ts](https://github.com/LCinder/Moon-vie/blob/master/src/index.ts)
+que contiene, por ahora, toda la lógica de negocio, en concreto la clase *Movie*
+- Enlace para acceder al enum [CONST](https://github.com/LCinder/Moon-vie/blob/master/src/CONST.ts) que contiene
+los _strings_ de las URL's.
+- Enlace para acceder a la [|HU1| - Como usuario quiero poder buscar películas por su nombre](https://github.com/LCinder/Moon-vie/issues/1)
+- Enlace para acceder a la [|HU2| - Como usuario quiero obtener información de una película](https://github.com/LCinder/Moon-vie/issues/2)
+- Enlace para acceder a la [|HU3| - Como usuario quiero ver las palabras clave que definen una película](https://github.com/LCinder/Moon-vie/issues/3)
+- Enlace para acceder a la [|HU4| - Como usuario quiero obtener el porcentaje de críticas buenas y/o malas de una película](https://github.com/LCinder/Moon-vie/issues/4)
+- Enlace para acceder a la [|HU5| - Como desarrollador, quiero poder obtener información de películas de una API externa](https://github.com/LCinder/Moon-vie/issues/5)
+
+Para la ejecución del código, es necesario tener instalado *node.js* y *typescript* y se ejecuta de la forma:
+`num run start`
