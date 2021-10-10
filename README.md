@@ -71,4 +71,4 @@ los _strings_ de las URL's.
 - Enlace para acceder a la [|HU5| - Como desarrollador, quiero poder obtener información de películas de una API externa](https://github.com/LCinder/Moon-vie/issues/5)
 
 Para la ejecución del código, es necesario tener instalado *node.js* y *typescript* y se ejecuta de la forma:
-`num run start`
+`npm run start`
