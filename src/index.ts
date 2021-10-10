@@ -1,9 +1,6 @@
-
-
-import fetch from "node-fetch";
 import axios from "axios";
-import { Environment } from "./environment";
-import * as assert from "assert";
+import {Environment} from "./environment";
+import {CONST} from "./CONST";
 
 class Movie {
     private _id: number;
@@ -73,35 +70,51 @@ class Movie {
     toString(): string {
         return `Movie: ${this._title}, con id: ${this.id}, nº reviews: ${this.reviews.length}, `
         + `descripcion: ${this.overview}, `
-        + `popularity: ${this.popularity} y votos: ${this.voteAverage}/10`;
+        + `popularity: ${this.popularity} votos: ${this.voteAverage}/10, `
+        + `\nReviews: \n\n ${this._reviews.toString()}`;
     }
 
     addReview(review: string) {
         this.reviews.push(review);
     }
 
-    async fetchAPI(url: string) {
+    async fetchURL(url: string) {
         let response: any = await axios.get(url);
         return response.data;
     }
 
-    convertJSON2Movie(data: any) {
-        let id: number;
-        let overview: string;
-        let popularity: number;
-        let voteAverage: number;
-        let json = data.results[0];
+    convertJSON2Movie(data: any, dataReviews: any) {
+        const json: any = data.results[0];
+        const reviews: any[] = dataReviews.results;
 
         this._id = json.id;
         this._overview = json.overview;
         this._popularity = json.popularity;
         this._voteAverage = json.vote_average;
+        reviews.forEach(review => this.addReview(review.content));
+    }
+
+    async request2Movie(title: string = this._title) {
+        try {
+            const urlMovie = CONST.TMDB_BASIC_URL + CONST.TMDB_SEARCH_URL + CONST.TMDB_API + Environment.API_TMDB
+            + CONST.TMDB_LANGUAGE_ES + CONST.TMDB_QUERY + title + CONST.TMDB_PAGE;
+            const dataMovie = await this.fetchURL(urlMovie);
+
+            const urlReviews = CONST.TMDB_BASIC_URL + CONST.TMDB_MOVIE_URL + dataMovie.results[0].id + "/"
+            + CONST.TMDB_REVIEWS_URL + CONST.TMDB_API + Environment.API_TMDB + CONST.TMDB_LANGUAGE_EN + CONST.TMDB_PAGE;
+            const dataReviews = await this.fetchURL(urlReviews);
+
+            this.convertJSON2Movie(dataMovie, dataReviews);
+
+        } catch (e: any) {
+            console.log(e.toString())
+        }
     }
 
 }
 
 async function test1() {
-    const movie1 = new Movie("TeneT");
+    const movie1 = new Movie("Tenet");
     movie1.id = 10;
     movie1.overview = "overview";
     movie1.popularity = 15000;
@@ -112,12 +125,11 @@ async function test1() {
     console.log(movie1.toString());
 }
 
-async function test2() {
-    const movie2 = new Movie("Tenet");
-    const data = await movie2.fetchAPI("https://api.themoviedb.org/3/search/movie?api_key=" + Environment.API_TMDB + "&language=en-US&query=tenet&page=1&include_adult=false");
-    await movie2.convertJSON2Movie(data);
+async function test2(title: string) {
+    const movie2 = new Movie(title);
+    await movie2.request2Movie();
     console.log(movie2.toString());
 }
 
 test1();
-test2();
+test2("Inception");
