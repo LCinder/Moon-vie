@@ -70,5 +70,6 @@ los _strings_ de las URL's.
 - Enlace para acceder a la [|HU4| - Como usuario quiero obtener el porcentaje de críticas buenas y/o malas de una película](https://github.com/LCinder/Moon-vie/issues/4)
 - Enlace para acceder a la [|HU5| - Como desarrollador, quiero poder obtener información de películas de una API externa](https://github.com/LCinder/Moon-vie/issues/5)
 
+Enlace para acceder al archivo [cc.yaml](https://github.com/LCinder/Moon-vie/blob/master/cc.yaml)
 Para la ejecución del código, es necesario tener instalado *node.js* y *typescript* y se ejecuta de la forma:
 `npm run start`
