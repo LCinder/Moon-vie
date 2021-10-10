@@ -1,7 +1,6 @@
 import axios from "axios";
 import {Environment} from "./environment";
 import {CONST} from "./CONST";
-import * as url from "url";
 
 class Movie {
     private _id: number;
@@ -71,8 +70,8 @@ class Movie {
     toString(): string {
         return `Movie: ${this._title}, con id: ${this.id}, nº reviews: ${this.reviews.length}, `
         + `descripcion: ${this.overview}, `
-        + `popularity: ${this.popularity} votos: ${this.voteAverage}/10`
-        + `, Reviews: \n\n ${this._reviews.toString()}`;
+        + `popularity: ${this.popularity} votos: ${this.voteAverage}/10, `
+        + `\nReviews: \n\n ${this._reviews.toString()}`;
     }
 
     addReview(review: string) {
@@ -115,7 +114,7 @@ class Movie {
 }
 
 async function test1() {
-    const movie1 = new Movie("TeneT");
+    const movie1 = new Movie("Tenet");
     movie1.id = 10;
     movie1.overview = "overview";
     movie1.popularity = 15000;
