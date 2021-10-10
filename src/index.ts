@@ -1,9 +1,7 @@
-
-
-import fetch from "node-fetch";
 import axios from "axios";
-import { Environment } from "./environment";
-import { CONST } from "./CONST";
+import {Environment} from "./environment";
+import {CONST} from "./CONST";
+import * as url from "url";
 
 class Movie {
     private _id: number;
@@ -73,7 +71,8 @@ class Movie {
     toString(): string {
         return `Movie: ${this._title}, con id: ${this.id}, nº reviews: ${this.reviews.length}, `
         + `descripcion: ${this.overview}, `
-        + `popularity: ${this.popularity} y votos: ${this.voteAverage}/10`;
+        + `popularity: ${this.popularity} votos: ${this.voteAverage}/10`
+        + `, Reviews: \n\n ${this._reviews.toString()}`;
     }
 
     addReview(review: string) {
@@ -85,19 +84,32 @@ class Movie {
         return response.data;
     }
 
-    convertJSON2Movie(data: any) {
+    convertJSON2Movie(data: any, dataReviews: any) {
         const json: any = data.results[0];
+        const reviews: any[] = dataReviews.results;
 
         this._id = json.id;
         this._overview = json.overview;
         this._popularity = json.popularity;
         this._voteAverage = json.vote_average;
+        reviews.forEach(review => this.addReview(review.content));
     }
 
     async request2Movie(title: string = this._title) {
-        const data = await this.fetchURL( CONST.TMDB_SEARCH_URL + Environment.API_TMDB
-        + CONST.TMDB_SEARCH_LANGUAGE_QUERY + title + CONST.TMDB_PAGE);
-        this.convertJSON2Movie(data);
+        try {
+            const urlMovie = CONST.TMDB_BASIC_URL + CONST.TMDB_SEARCH_URL + CONST.TMDB_API + Environment.API_TMDB
+            + CONST.TMDB_LANGUAGE_ES + CONST.TMDB_QUERY + title + CONST.TMDB_PAGE;
+            const dataMovie = await this.fetchURL(urlMovie);
+
+            const urlReviews = CONST.TMDB_BASIC_URL + CONST.TMDB_MOVIE_URL + dataMovie.results[0].id + "/"
+            + CONST.TMDB_REVIEWS_URL + CONST.TMDB_API + Environment.API_TMDB + CONST.TMDB_LANGUAGE_EN + CONST.TMDB_PAGE;
+            const dataReviews = await this.fetchURL(urlReviews);
+
+            this.convertJSON2Movie(dataMovie, dataReviews);
+
+        } catch (e: any) {
+            console.log(e.toString())
+        }
     }
 
 }
