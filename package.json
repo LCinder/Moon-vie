@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/LCinder/Moon-vie#readme",
   "dependencies": {
-    "axios": "^0.22.0"
+    "@types/node": "^16.11.0"
   }
 }
