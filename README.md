@@ -61,7 +61,11 @@ y de la clave pública
 
 ## :chart_with_upwards_trend: Código :chart_with_upwards_trend:
 - Enlace para acceder a la clase [index.ts](https://github.com/LCinder/Moon-vie/blob/master/src/index.ts)
-que contiene, por ahora, toda la lógica de negocio, en concreto la clase *Movie*
+que llama a la clases imprescindibles para comprobar el funcionamiento
+- Enlace para acceder a la clase [movie.ts](https://github.com/LCinder/Moon-vie/blob/master/src/movie.ts) que
+guarda la información de una película, jutno con funciones básicas necesarias
+- Enlace para acceder a la clase [movies.ts](https://github.com/LCinder/Moon-vie/blob/master/src/movies.ts) que
+carga la información del archivo JSON junto con funciones básicas necesarias
 - Enlace para acceder a la [|HU1| - Como usuario quiero poder buscar películas por su nombre](https://github.com/LCinder/Moon-vie/issues/1)
 - Enlace para acceder a la [|HU2| - Como usuario quiero obtener información de una película](https://github.com/LCinder/Moon-vie/issues/2)
 - Enlace para acceder a la [|HU3| - Como usuario quiero ver las palabras clave que definen una película](https://github.com/LCinder/Moon-vie/issues/3)
