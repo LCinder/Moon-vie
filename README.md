@@ -20,8 +20,8 @@ y se pretende, **en un sólo vistazo, saber si una película le gustará al usua
 
 ---
 
-Inicialmente el sistema dispondrá de acceso a varias API externas, como [TheMovieDB](https://developers.themoviedb.org/)
-e [IMDB](https://imdb-api.com/) para la obtención de películas de donde se pueden
+Inicialmente el sistema dispondrá de películas obtenidas de API's como [TheMovieDB](https://developers.themoviedb.org/)
+e [IMDB](https://imdb-api.com/) pero almacenadas en un archivo JSON local para la obtención de películas de donde se pueden
 recuperar mucha información de las mismas como su nombre, género, descripción, y sobretodo **comentarios**, de tal manera
 que obtendrá todos los comentarios (o los más relevantes) de esa película introducida por
 el usuario para, mediante algoritmos de *machine learning* y/o de minería de textos y 
@@ -71,5 +71,8 @@ los _strings_ de las URL's.
 - Enlace para acceder a la [|HU5| - Como desarrollador, quiero poder obtener información de películas de una API externa](https://github.com/LCinder/Moon-vie/issues/5)
 
 - Enlace para acceder al archivo [cc.yaml](https://github.com/LCinder/Moon-vie/blob/master/cc.yaml)
+- Enlace para acceder al archivo [movies.json](https://github.com/LCinder/Moon-vie/blob/master/data/movies.json) de donde se obtiene la información de las películas,
+previamente habiendo realizado varias *querys* (bastantes en verdad) mediante un *script* para obtener miles de películas
+junto con sus *reviews* y almacenarlas en este archivo, eliminando la necesidad de utilizar la API.
 - Para la ejecución del código, es necesario tener instalado *node.js* y *typescript* y se ejecuta de la forma:
 `npm run start`
