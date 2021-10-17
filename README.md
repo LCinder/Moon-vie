@@ -62,14 +62,12 @@ y de la clave pública
 ## :chart_with_upwards_trend: Código :chart_with_upwards_trend:
 - Enlace para acceder a la clase [index.ts](https://github.com/LCinder/Moon-vie/blob/master/src/index.ts)
 que contiene, por ahora, toda la lógica de negocio, en concreto la clase *Movie*
-- Enlace para acceder al enum [CONST](https://github.com/LCinder/Moon-vie/blob/master/src/CONST.ts) que contiene
-los _strings_ de las URL's.
 - Enlace para acceder a la [|HU1| - Como usuario quiero poder buscar películas por su nombre](https://github.com/LCinder/Moon-vie/issues/1)
 - Enlace para acceder a la [|HU2| - Como usuario quiero obtener información de una película](https://github.com/LCinder/Moon-vie/issues/2)
 - Enlace para acceder a la [|HU3| - Como usuario quiero ver las palabras clave que definen una película](https://github.com/LCinder/Moon-vie/issues/3)
 - Enlace para acceder a la [|HU4| - Como usuario quiero obtener el porcentaje de críticas buenas y/o malas de una película](https://github.com/LCinder/Moon-vie/issues/4)
-- Enlace para acceder a la [|HU5| - Como desarrollador, quiero poder obtener información de películas de una API externa](https://github.com/LCinder/Moon-vie/issues/5)
-
+- Enlace para acceder a la [|HU5| - Como desarrollador, quiero buscar una película por el título y almacenar su información (reviews, id, etc)](https://github.com/LCinder/Moon-vie/issues/5)
+- Enlace a los [milestones, en concreto al del hito 1](https://github.com/LCinder/Moon-vie/milestone/1)
 - Enlace para acceder al archivo [cc.yaml](https://github.com/LCinder/Moon-vie/blob/master/cc.yaml)
 - Enlace para acceder al archivo [movies.json](https://github.com/LCinder/Moon-vie/blob/master/data/movies.json) de donde se obtiene la información de las películas,
 previamente habiendo realizado varias *querys* (bastantes en verdad) mediante un *script* para obtener miles de películas
