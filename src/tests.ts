@@ -6,7 +6,8 @@ import {assert} from "chai";
 import {Movies} from "./movies";
 import {Movie} from "./movie";
 
-describe("Movie Tenet", () => {
+
+describe("Quiero obtener informacion de una pelicula", () => {
     const movies = new Movies();
     const movie = movies.find("Tenet");
 
@@ -15,6 +16,10 @@ describe("Movie Tenet", () => {
     });
     it("Deberia tener propiedad id", () => {
         assert.property(movie, "id");
+    });
+    it("Deberia poder ver la overview", () => {
+        assert.property(movie, "overview");
+        assert.isNotEmpty(movie.overview);
     });
     it("Reviews deberia ser un array y no estar vacio", () => {
         assert.isArray(movie.reviews);
