@@ -84,4 +84,10 @@ export class Movie {
         this.reviews.push(review);
     }
 
+    extractKeywords(): string[] {
+        let res: string [] = [];
+
+        return res;
+    }
+
 }
