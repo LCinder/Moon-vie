@@ -15,4 +15,11 @@ describe("Quiero obtener informacion de una pelicula", () => {
     it("Deberia existir", () => {
         assert.exists(movie);
     });
+    it("Deberia tener propiedad id", () => {
+        assert.property(movie, "id");
+    });
+    it("Deberia poder ver la overview", () => {
+        assert.property(movie, "overview");
+        assert.isNotEmpty(movie.overview);
+    });
 });
