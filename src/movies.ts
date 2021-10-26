@@ -20,6 +20,7 @@ export class Movies {
 
     convertJSON2Movie(json: any): Movie {
         const movie = new Movie();
+        movie.title = json.title;
         movie.id = json.id;
         movie.overview = json.overview;
         movie.popularity = json.popularity;
