@@ -22,4 +22,10 @@ describe("Quiero obtener informacion de una pelicula", () => {
         assert.property(movie, "overview");
         assert.isNotEmpty(movie.overview);
     });
+    it("Reviews deberia ser un array y no estar vacio", () => {
+        assert.isArray(movie.reviews);
+        assert.isNotEmpty(movie.reviews);
+        console.log(movie.toString());
+
+    });
 });
