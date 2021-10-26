@@ -9,7 +9,8 @@ import {Movie} from "./movie";
 
 describe("Quiero obtener informacion de una pelicula", () => {
     const movies = new Movies();
-    const movie = movies.find("Tenet");
+    const movieObject = movies.find("Tenet");
+    const movie: Movie = new Movie(movies.convertJSON2Movie(movieObject));
 
     it("Deberia existir", () => {
         assert.exists(movie);
@@ -24,10 +25,17 @@ describe("Quiero obtener informacion de una pelicula", () => {
     it("Reviews deberia ser un array y no estar vacio", () => {
         assert.isArray(movie.reviews);
         assert.isNotEmpty(movie.reviews);
+        console.log(movie.toString());
+
     });
-    it("Spy", () => {
+    it("Vote average deberia ser un nº entre 0 y 10", () => {
+        assert.isNumber(movie.voteAverage);
+        assert.isAtLeast(movie.voteAverage, 0);
+        assert.isAtMost(movie.voteAverage, 10);
+    });
+/*    it("Spy", () => {
         const spy = sinon.spy(Movie.prototype, "addReview");
         const movie2 = movies.find("Tenet");
         assert.equal(spy.callCount, 5);
-    });
+    });*/
 });
