@@ -2,15 +2,16 @@
 const gulp = require("gulp");
 const ts = require("gulp-typescript");
 const mocha = require("gulp-mocha");
-const tsProject = ts.createProject("tsconfing.json");
 
 gulp.task("default", () => {
+    const tsProject = ts.createProject("../tsconfig.json");
+
     return gulp.src("./*.ts")
-    .pipe(ts())
-    .pipe(gulp.dest("./"))
-    .pipe(tsProject());
+    .pipe(tsProject())
+    .pipe(gulp.dest("./"));
 });
 
-gulp.task("test", () => {
+gulp.task("test", (done) => {
    gulp.src("./tests.js").pipe(mocha());
+   done();
 });
