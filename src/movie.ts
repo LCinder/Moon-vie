@@ -80,6 +80,12 @@ export class Movie {
             + `\nReviews: \n\n ${this._reviews.toString()}`;
     }
 
+    removeBadCharacters(review: string): string {
+        const cleaned = review.replace(/["'“\-()\n]/g, "")
+        .replace(/\s\s+/g, " ");
+        return cleaned;
+    }
+
     addReview(review: string) {
         this.reviews.push(review);
     }
