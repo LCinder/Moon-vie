@@ -39,7 +39,7 @@ describe("Quiero obtener informacion de una pelicula", () => {
             });*/
     });
     describe("Pelicula no existe", () => {
-        it("Salta error Movie does not exist", () => {
+        it("Salta error 'Movie does not exist'", () => {
             assert.throws(() => {
                 const movieObjectError = movies.find("La La Land");
                 const movieError: Movie = new Movie(movies.convertJSON2Movie(movieObjectError));
