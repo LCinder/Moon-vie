@@ -94,8 +94,12 @@ export class Movie {
 
     extractKeywords(): string[] {
         let keywords: string [] = [];
-        this._reviews.forEach(element => {
-            let ldaElement = lda(element.match( /[^\.!\?]+[\.!\?]+/g ), 5, 10);
+        const information: string[] = this._reviews;
+        information.push(this._overview);
+        let ldaElement: any[];
+
+        information.forEach(element => {
+            ldaElement = lda(element.match( /[^\.!\?]+[\.!\?]+/g ), information.length, 10);
             ldaElement[0].forEach((term: { term: any; }) => {
                 if(!stopWords.includes(term.term))
                     keywords.push(term.term);
