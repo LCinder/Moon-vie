@@ -24,8 +24,8 @@ Inicialmente el sistema dispondrá de películas obtenidas de API's como [TheMov
 e [IMDB](https://imdb-api.com/) pero almacenadas en un archivo JSON local para la obtención de películas de donde se pueden
 recuperar mucha información de las mismas como su nombre, género, descripción, y sobretodo **comentarios**, de tal manera
 que obtendrá todos los comentarios (o los más relevantes) de esa película introducida por
-el usuario para, mediante algoritmos de *machine learning* y/o de minería de textos y 
-métodos de recuperación de información como **[TF-IDF,](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)** ser capaz de obtener
+el usuario para, mediante algoritmos de *machine learning* y/o de minería de textos 
+y en concreto, un modelo generativo **[LDA,](https://es.wikipedia.org/wiki/Latent_Dirichlet_Allocation)** ser capaz de obtener
 las palabras clave de esa película y dar una idea general de la misma.
 
 ### Ejemplo
@@ -67,6 +67,7 @@ y de la clave pública
 ## :pencil2: Tests :pencil2:
 - Enlace para acceder a la [documentación de los test](https://github.com/LCinder/Moon-vie/blob/master/docs/hito2-Test.md)
 incluyendo elección de librería de aserciones, marco de pruebas y gestor de tareas
-- Enlace al script [tests.ts](https://github.com/LCinder/Moon-vie/blob/hito-2/src/tests.ts) que incluye los tests que comprueban las HU
-- Enlace a las clases [movie.ts](https://github.com/LCinder/Moon-vie/blob/hito-2/src/movie.ts) y [movies.ts](https://github.com/LCinder/Moon-vie/blob/hito-2/src/movies.ts) que se han avanzado para continuar
-con las HU indicadas (en concreto HU #2, #3 y #5)
+- Enlace al script [tests.ts](https://github.com/LCinder/Moon-vie/blob/master/src/tests.ts) que incluye los tests que comprueban las HU
+- Enlace al script [gulpfile.js](https://github.com/LCinder/Moon-vie/blob/master/src/gulpfile.js) como archivo de configuración del gestor de tareas *Gulp*
+- Enlace a las clases [movie.ts](https://github.com/LCinder/Moon-vie/blob/master/src/movie.ts) y [movies.ts](https://github.com/LCinder/Moon-vie/blob/hito-2/src/movies.ts) que se han avanzado para continuar
+con las HU indicadas (en concreto HU [#2](https://github.com/LCinder/Moon-vie/issues/2), [#3](https://github.com/LCinder/Moon-vie/issues/3) y [#5](https://github.com/LCinder/Moon-vie/issues/5))
