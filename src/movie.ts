@@ -99,7 +99,7 @@ export class Movie {
         let ldaElement: any[];
 
         information.forEach(element => {
-            ldaElement = lda(element.match( /[^\.!\?]+[\.!\?]+/g ), information.length, 10);
+            ldaElement = lda(element.match( /[^\.!\?]+[\.!\?]+/g ), 5, 10, null, null, null, 123);
             ldaElement[0].forEach((term: { term: any; }) => {
                 if(!stopWords.includes(term.term))
                     keywords.push(term.term);
