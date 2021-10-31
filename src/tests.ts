@@ -43,7 +43,6 @@ describe("Quiero obtener informacion de una pelicula", () => {
 });
 describe("Quiero saber la clasificacion tematica de una pelicula", () => {
     const keywords = movie.extractKeywords();
-    console.log(keywords);
     it("Deberia obtener array y no estar vacio", () => {
         assert.isArray(keywords);
         assert.isNotEmpty(keywords);
