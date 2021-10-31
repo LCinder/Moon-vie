@@ -1,13 +1,12 @@
 
 import "mocha";
-import sinon from "sinon";
 import chai from "chai";
 import {assert} from "chai";
 import {Movies} from "./movies";
 import {Movie} from "./movie";
 
 const movies = new Movies();
-const movieObject = movies.find("Tenet");
+const movieObject = movies.find("The Hobbit: An Unexpected Journey");
 const movie: Movie = new Movie(movies.convertJSON2Movie(movieObject));
 
 
@@ -44,19 +43,19 @@ describe("Quiero obtener informacion de una pelicula", () => {
 });
 describe("Quiero saber la clasificacion tematica de una pelicula", () => {
     const keywords = movie.extractKeywords();
-
+    console.log(keywords);
     it("Deberia obtener array y no estar vacio", () => {
         assert.isArray(keywords);
         assert.isNotEmpty(keywords);
     });
     it("Deberia incluir keywords 'story', 'dragon', 'hobbit'", () => {
-        assert.include(keywords, ["story"]);
-        assert.include(keywords, ["dragon"]);
-        assert.include(keywords, ["hobbit"]);
+        assert.include(keywords, "story");
+        assert.include(keywords, "dragon");
+        assert.include(keywords, "hobbit");
     });
-    it("Deberia incluir keywords basadas en gustos 'amazing', 'love', 'great'", () => {
-        assert.include(keywords, ["amazing"]);
-        assert.include(keywords, ["love"]);
-        assert.include(keywords, ["great"]);
+    it("Deberia incluir keywords basadas en gustos 'amazing', 'loved', 'great'", () => {
+        assert.include(keywords, "amazing");
+        assert.include(keywords, "loved");
+        assert.include(keywords, "great");
     });
 });
