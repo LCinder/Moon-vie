@@ -1,7 +1,6 @@
 
 
 ## :chart_with_upwards_trend: Código :chart_with_upwards_trend:
----
 
 - Enlace para acceder a la clase [index.ts](https://github.com/LCinder/Moon-vie/blob/master/src/index.ts)
   que llama a las clases imprescindibles para comprobar el funcionamiento
