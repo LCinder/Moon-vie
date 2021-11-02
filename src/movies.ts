@@ -12,8 +12,6 @@ export class Movies {
     find(title: string): any {
         let res: any = this._movies.movies.find((e: { original_title: string; }) => {
             if(e.original_title === title) {
-                res = e;
-                console.log("res1")
                 return e;
             }
         });
@@ -22,12 +20,20 @@ export class Movies {
 
     convertJSON2Movie(json: any): Movie {
         const movie = new Movie();
-        movie.id = json.id;
-        movie.overview = json.overview;
-        movie.popularity = json.popularity;
-        movie.voteAverage = json.vote_average;
-        json.reviews.forEach((review: string) => movie.addReview(review));
-        return movie;
+        if (json !== undefined) {
+            movie.title = json.title;
+            movie.id = json.id;
+            movie.overview = json.overview;
+            movie.popularity = json.popularity;
+            movie.voteAverage = json.vote_average;
+            json.reviews.forEach((review: string) => {
+                movie.addReview(movie.removeBadCharacters(review))
+            });
+            return movie;
+        } else {
+            throw new Error("Movie does not exist");
+        }
+
     }
 
 }

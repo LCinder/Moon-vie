@@ -1,3 +1,5 @@
+import lda from "lda";
+import {stopWords} from "./stopWords";
 
 export class Movie {
     private _id: number;
@@ -80,8 +82,30 @@ export class Movie {
             + `\nReviews: \n\n ${this._reviews.toString()}`;
     }
 
+    removeBadCharacters(review: string): string {
+        const cleaned = review.replace(/["'“\-()\n]/g, "")
+        .replace(/\s\s+/g, " ");
+        return cleaned;
+    }
+
     addReview(review: string) {
         this.reviews.push(review);
+    }
+
+    extractKeywords(): string[] {
+        let keywords: string [] = [];
+        const information: string[] = this._reviews;
+        information.push(this._overview);
+        let ldaElement: any[];
+
+        information.forEach(element => {
+            ldaElement = lda(element.match( /[^\.!\?]+[\.!\?]+/g ), 5, 10, null, null, null, 123);
+            ldaElement[0].forEach((term: { term: any; }) => {
+                if(!stopWords.includes(term.term))
+                    keywords.push(term.term);
+            });
+        });
+        return keywords;
     }
 
 }
