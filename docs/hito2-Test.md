@@ -75,6 +75,30 @@ gulp --guplfile src/gulpfile.ts test
 ```
 
 ---
+## Test realizados
+En este caso se han testeado funcionalidades referentes a la _HU2 (Como usuario quiero, mediante el nombre de una película, obtener información de la misma)_
+y la _HU3 (Como usuario quiero saber la clasificación temática que define una película)_ debido a que se tratan de las primeras funcionalidades a implementar.
+
+De esta manera, para la HU2 se comprueba:
+- Si una película existe y además
+  - Tiene un id
+  - Tiene una overview
+  - Tiene un array de reviews no vacío
+  - Tiene un vote average que es un nº entre 0 y 10
+
+Para la HU3 se comprueba, aplicando ua técnica de extracción de palabras clave (habiendo avanzado el código) si:
+- Al extraer palabras clave de una película, se obtiene un array de palabras no vacío
+- En el caso concreto de _El Hobbit: Un viaje inesperado_ se obtiene las palabras:
+_historia, hobbit, dragon (entre otras muchas)_
+
+
+Ejecutando la tarea de _gulpfile test_ se obtiene el siguiente _feedback_:
+
+![testCorrectos](https://github.com/LCinder/Moon-vie/blob/master/docs/img/test.PNG)
+
+Donde se observa que se pasan todos los test correctamente.
+
+---
 
 ### Cómo realizar tests
 Se pretende realizar lso *tests* siguiendo el método FIRST (transparencias de JJ y [blog.softtek.com](https://blog.softtek.com/es/testing-unitario))
