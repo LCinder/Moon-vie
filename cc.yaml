@@ -1,3 +1,9 @@
 
 entidad:
   - src/index.ts
+lenguaje:
+  - typescript
+test:
+  - src/tests.ts
+fichero_tareas:
+  - src/gulpfile.js
