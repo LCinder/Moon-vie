@@ -43,9 +43,23 @@ volver a suceder
 - Los issues plantean problemas, el codigo es la solucion al problema, el
 commit indica como se ha solucionado
 - Se testea el **comportamiento**
+---
+- Para subir a DockerHub se necesita GithubActions
+- Antes se podia dar de alta el repositorio en DockerHub y hacer push
+  tranquilamente, ahora solo alojan
+- GitHubActions son flujos de trabajo workflows que conmienzan cuando sucecen un tipo de eventos
+- Estructura:
+  - Name
+  - On: Indica los eventos que hacen que ese GHA funcione
+  - Jobs: Trabajos que se ejecutan
+    - En _uses_ se utiliza un tag detrás de @ para evitar problemas tochos
+    - También se pasa un _commit_ para garantizarte que te descargas el repositorio
+    desde un commit especifico y no la lias
+    - Cambiaren el workflow el docker/etadata.action@sha
+  - `git tag -a v1.0-MV -m "Release"`
 
 ---
 
-### Docker
+### 
 
  
