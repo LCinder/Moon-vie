@@ -1,5 +1,7 @@
 FROM node
 
+RUN mkdir /node_modules
+
 USER node
 
 COPY package.json ./
