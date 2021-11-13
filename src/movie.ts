@@ -82,10 +82,10 @@ export class Movie {
             + `\nReviews: \n\n ${this._reviews.toString()}`;
     }
 
+    // Elimina ", quotes, -, (), y saltos de linea \n
     removeBadCharacters(review: string): string {
-        const cleaned = review.replace(/["'“\-()\n]/g, "")
+        return review.replace(/["'“\-()\n]/g, "")
         .replace(/\s\s+/g, " ");
-        return cleaned;
     }
 
     addReview(review: string) {
