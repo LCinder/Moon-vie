@@ -1,5 +1,6 @@
 FROM alpine AS base_image
 
+# Se crea el usuario con privilegios especificos para el directorio node_modules
 RUN adduser -S node && apk add --no-cache --update nodejs npm make && mkdir /node_modules && chown node /node_modules
 
 USER node
