@@ -7,6 +7,7 @@ USER node
 
 COPY package*.json ./
 
+# npm ci es especifico para entornos CI
 RUN npm ci && npm cache clean --force
 
 FROM base_image AS install
