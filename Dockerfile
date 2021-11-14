@@ -10,6 +10,7 @@ COPY package*.json ./
 # npm ci es especifico para entornos CI
 RUN npm ci && npm cache clean --force
 
+# Multi-stage: Optimizacion imagen
 FROM base_image AS install
 
 COPY --from=base_image /node_modules /node_modules
