@@ -14,7 +14,7 @@ FROM base_image AS install
 
 COPY --from=base_image /node_modules /node_modules
 
-WORKDIR /src/src
+WORKDIR /app/test/src
 
 ENV PATH=/node_modules/.bin:$PATH
 
