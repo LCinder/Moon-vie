@@ -43,14 +43,15 @@ describe("Quiero obtener informacion de una pelicula", () => {
 });
 describe("Quiero saber la clasificacion tematica de una pelicula", () => {
     const keywords = movie.extractKeywords();
+    console.log(keywords);
     it("Deberia obtener array y no estar vacio", () => {
         assert.isArray(keywords);
         assert.isNotEmpty(keywords);
     });
-    it("Deberia incluir keywords 'story', 'dragon', 'hobbit'", () => {
+    it("Deberia incluir keywords 'story', 'bilbo', 'dragon'", () => {
         assert.include(keywords, "story");
         assert.include(keywords, "dragon");
-        assert.include(keywords, "hobbit");
+        assert.include(keywords, "bilbo");
     });
     it("Deberia incluir keywords basadas en gustos 'amazing', 'loved', 'great'", () => {
         assert.include(keywords, "amazing");
