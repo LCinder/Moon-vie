@@ -40,9 +40,6 @@ Adecuado para restricciones de espacio ya que pesa muy poco.
 a entornos en los que la restricción de espacio es extremadamente importante (parecido al anterior).
 
 ---
-### sandrokeil/typescript
-
----
 ### alpine
 Imagen no oficial del lenguaje _node.js_ pero muy utilizada actualmente, ya que pesa únicamente 5MB, además
 de ser completamente personalizable.
