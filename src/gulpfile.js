@@ -3,17 +3,19 @@ const gulp = require("gulp");
 const ts = require("gulp-typescript");
 const mocha = require("gulp-mocha");
 
-gulp.task("default", (done) => {
+gulp.task("default", () => {
     const tsProject = ts.createProject("../tsconfig.json");
 
-    gulp.src("./*.ts")
+    return gulp.src("./*.ts")
     .pipe(tsProject())
     .pipe(gulp.dest("./"));
 
-    done();
 });
 
-gulp.task("test", gulp.series("default", (done) => {
+gulp.task("test",(done) => {
    gulp.src("./tests.js").pipe(mocha());
    done();
-}));
+});
+
+
+gulp.task("tests", gulp.series("default", "test"));
