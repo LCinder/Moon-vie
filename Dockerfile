@@ -15,6 +15,7 @@ FROM base_image AS install
 
 COPY --from=base_image /node_modules /node_modules
 
+# Se cambia el directorio de trabajo
 WORKDIR /app/test/src
 
 ENV PATH=/node_modules/.bin:$PATH
