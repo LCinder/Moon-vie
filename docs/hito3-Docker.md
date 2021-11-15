@@ -187,7 +187,17 @@ Además, se ha creado dentro del mismo _webhook_ un _step_ para subir la imagen 
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GHCR_TOKEN }}
+        
+   ...
+    with:
+        images: |
+            lcinder/moon-vie
+            ghcr.io/lcinder/moon-vie
+        tags: |
+            latest
 ```
+
+Modificando los _tags y las _images_ a hacer _push_
 
 Y nos aseguramos que está la imagen subida a _DockerHub_
 
