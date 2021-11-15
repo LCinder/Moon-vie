@@ -65,9 +65,12 @@ y de la clave pública
 ---
 
 ## :pencil2: Tests :pencil2:
-- Enlace para acceder a la [documentación de los test](https://github.com/LCinder/Moon-vie/blob/master/docs/hito2-Test.md)
-incluyendo elección de librería de aserciones, marco de pruebas y gestor de tareas y prueba de los test
-- Enlace al script [tests.ts](https://github.com/LCinder/Moon-vie/blob/master/src/tests.ts) que incluye los tests que comprueban las HU
-- Enlace al script [gulpfile.js](https://github.com/LCinder/Moon-vie/blob/master/src/gulpfile.js) como archivo de configuración del gestor de tareas *Gulp*
-- Enlace a las clases [movie.ts](https://github.com/LCinder/Moon-vie/blob/master/src/movie.ts) y [movies.ts](https://github.com/LCinder/Moon-vie/blob/master/src/movies.ts) que se han avanzado para continuar
-con las HU indicadas (en concreto HU [#2](https://github.com/LCinder/Moon-vie/issues/2), [#3](https://github.com/LCinder/Moon-vie/issues/3) y [#5](https://github.com/LCinder/Moon-vie/issues/5))
+- Enlace para acceder a toda la documentación de los [test realizados](https://github.com/LCinder/Moon-vie/blob/master/docs/hito2.md)
+
+---
+
+## :whale2: Docker :whale2:
+- Enlace para acceder a la [elección de las imágenes para el contenedor](https://github.com/LCinder/Moon-vie/blob/master/docs/hito-Docker.md)
+- Enlace para acceder al [Dockerfile](https://github.com/LCinder/Moon-vie/blob/master/Dockerfile) y a la [documentación del mismo](https://github.com/LCinder/Moon-vie/blob/master3/docs/hito-Docker.md#comparaci%C3%B3n-im%C3%A1genes-y-dockerfile) junto con las buenas prácticas
+- Enlace para acceder a la documentación del [despliegue automático del contenedor a DockerHub y GHCR](https://github.com/LCinder/Moon-vie/blob/master/docs/hito-Docker.md#contenedor-subido-y-actualizaci%C3%B3n-autom%C3%A1tica)
+- Enlace para acceder a la documentación de la subida del contenedor a [GitHub Container Registry](https://github.com/LCinder/Moon-vie/blob/master/docs/hito-Docker.md#github-container-registry)
