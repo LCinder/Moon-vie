@@ -13,6 +13,7 @@ RUN npm ci && npm cache clean --force
 # Multi-stage: Optimizacion imagen
 FROM base_image AS install
 
+# Etapa anterior
 COPY --from=base_image /node_modules /node_modules
 
 # Se cambia el directorio de trabajo
