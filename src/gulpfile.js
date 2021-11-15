@@ -11,7 +11,7 @@ gulp.task("default", () => {
     .pipe(gulp.dest("./"));
 });
 
-gulp.task("test", (done) => {
+gulp.task("test", gulp.series("default", (done) => {
    gulp.src("./tests.js").pipe(mocha());
    done();
-});
+}));
