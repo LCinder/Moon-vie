@@ -15,7 +15,7 @@ juntas, para evitar instalar las dependencias necesarias. Veremos una imagen que
 que justamente se utilizan en este proyecto, y la compararemos con otras imágenes.
 
 Como en este proyecto se utiliza el entorno _node.js_ vamos a utilizar diferentes tipos de imágenes
-del mismo, y además otras comentadas anteriormente creadas por usuarios que son más específicas. Se comentan
+del mismo, que se comentan
 a continuación.
 
 ***
