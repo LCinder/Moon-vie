@@ -57,6 +57,8 @@ commit indica como se ha solucionado
     desde un commit especifico y no la lias
     - Cambiaren el workflow el docker/etadata.action@sha
   - `git tag -a v1.0-MV -m "Release"`
+## Travis
+  - before_install: Instalar test y task runner
 
 ---
 
