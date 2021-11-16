@@ -26,7 +26,7 @@ USER root
 RUN chown node /app/test
 
 # Volvemos a cambiar de usuario para ejecutar los test
-USER node
+#USER node
 
 ENV PATH=/node_modules/.bin:$PATH
 
