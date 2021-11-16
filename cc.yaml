@@ -4,6 +4,6 @@ entidad:
 lenguaje:
   - typescript
 test:
-  - src/tests.ts
+  - tests/tests.ts
 fichero_tareas:
   - src/gulpfile.js
