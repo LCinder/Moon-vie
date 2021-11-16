@@ -17,8 +17,17 @@ FROM base_image AS install
 COPY --from=base_image /node_modules /node_modules
 
 # Se cambia el directorio de trabajo
-WORKDIR /app/test/src
+WORKDIR /app/test
+
+# Necesario otorgar permisos de escritura a usuario node ya que se compilan y se crear archivos .js
+USER root
+
+# Damos permisos de escritura
+RUN chown node /app/test
+
+# Volvemos a cambiar de usuario para ejecutar los test
+USER node
 
 ENV PATH=/node_modules/.bin:$PATH
 
-CMD ["gulp", "tests"]
+CMD ["gulp", "--gulpfile", "src/gulpfile.js", "tests"]
