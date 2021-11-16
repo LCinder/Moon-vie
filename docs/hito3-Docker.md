@@ -159,17 +159,27 @@ Ejecutamos los test con el contenedor creado, y obtenemos que se pasan satisfact
 ## Contenedor Subido y Actualización Automática
 
 Además, para que se suba la imagen automáticamente cada vez que se actualice el _Dockerfile,_
-nos ayudamos de los _webhooks_ de _GitHub Actions_ indicando que cuando se haga _push_
-en el archivo _Dockerfile_ se ejecute el _webhook_ para el despliegue, proporcionando antes
-el _username_ y la contraseña en el apartado _secrets_ del repositorio.
+nos ayudamos de los _webhooks_ de _GitHub Actions._
+
+Antes estaba puesto a que se lanzaran cuando se cambiaba el Dockerfile, 
+pero he visto más necesario que se lance cuando e cualquier commit se incluye `[docker deploy]` cuando se hace push a la rama master.
+
+Es necesario antes haber proporcionando el _username_ y la contraseña en el apartado _secrets_ del repositorio.
 
 ```
 name: Publish Docker image
 
 on:
   push:
-    paths:
-      - "Dockerfile"
+    branches:
+      - master
+      
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, '[docker deploy]')
+    steps:
 ```
 
 Las versiones utilizadas para los _webhooks_ y obtenidas de los repositorios de _docker_ son
