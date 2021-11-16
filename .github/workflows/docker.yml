@@ -7,8 +7,6 @@ name: Publish Docker image
 
 on:
   push:
-    paths:
-      - "Dockerfile"
     branches:
       - master
 
@@ -16,7 +14,7 @@ jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.head_commit.message, "[docker deploy]") == true }}
+    if: contains(github.event.head_commit.message, "[docker deploy]") == true
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
