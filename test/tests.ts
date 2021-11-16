@@ -2,8 +2,8 @@
 import "mocha";
 import chai from "chai";
 import {assert} from "chai";
-import {Movies} from "./movies";
-import {Movie} from "./movie";
+import {Movies} from "../src/movies";
+import {Movie} from "../src/movie";
 
 const movies = new Movies();
 const movieObject = movies.find("The Hobbit: An Unexpected Journey");
