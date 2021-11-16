@@ -3,7 +3,7 @@ FROM alpine AS base_image
 # Se crea el usuario con privilegios especificos para el directorio node_modules
 RUN adduser -S node && apk add --no-cache --update nodejs npm make && mkdir /node_modules && chown node /node_modules
 
-USER node
+#USER node
 
 COPY package*.json ./
 
@@ -20,7 +20,7 @@ COPY --from=base_image /node_modules /node_modules
 WORKDIR /app/test
 
 # Necesario otorgar permisos de escritura a usuario node ya que se compilan y se crear archivos .js
-USER root
+#USER root
 
 # Damos permisos de escritura
 RUN chown node /app/test
