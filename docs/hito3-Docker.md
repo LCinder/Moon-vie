@@ -62,25 +62,29 @@ En concreto, el Dockerfile utilizado para la imagen _alpine_ es el siguiente:
 ```
 FROM alpine AS base_image
 
-RUN adduser -S node && apk add --no-cache --update nodejs npm make \
-&& mkdir /node_modules && chown node /node_modules
+# Se crea el usuario con privilegios especificos para el directorio node_modules
+RUN adduser -S node && apk add --no-cache --update nodejs npm make && mkdir /node_modules && chown node /node_modules
 
 USER node
 
 COPY package*.json ./
 
+# npm ci es especifico para entornos CI
 RUN npm ci && npm cache clean --force
 
-FROM base_image AS dependencies
+# Multi-stage: Optimizacion imagen
+FROM base_image AS install
 
+# Etapa anterior
 COPY --from=base_image /node_modules /node_modules
 
-WORKDIR /src/src
+# Se cambia el directorio de trabajo
+WORKDIR /app/test
 
 ENV PATH=/node_modules/.bin:$PATH
 
-CMD ["gulp"]
-CMD ["gulp", "test"] 
+CMD ["gulp", "--gulpfile", "src/gulpfile.js", "tests"]
+
  ```
 
 
@@ -230,7 +234,7 @@ de la manera: `export TOKEN=TOKEN`
 `docker push ghcr.io/lcinder/moon-vie` y comprobamos que se ha subido correctamente:
 
 
-![Login docker](https://github.com/LCinder/Moon-vie/blob/master/docs/img/ghcr.PNG)
+![Login docker](https://github.com/LCinder/Moon-vie/blob/master/docs/img/ghcr_login.PNG)
 
 Ahora nos queda enlazarlo a GitHub para que nos aparezca como _Package,_ simplemente hay que cambiar
 la visibilidad del paquete a _público_ y conectarlo al repositorio, quedando de la forma:
