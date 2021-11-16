@@ -1,6 +1,7 @@
 .idea
 CC.iml
 src/*.js
+test/*.js
 node_modules
 src/environment.ts
 !src/gulpfile.js
