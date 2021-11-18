@@ -5,23 +5,22 @@ const mocha = require("gulp-mocha");
 
 gulp.task("default", () => {
     const tsProject = ts.createProject("../tsconfig.json");
-    const tsProject2 = ts.createProject("../tsconfig.json");
 
-    return gulp.src("src/**/*.ts")
+    return gulp.src("src/*.ts")
     .pipe(tsProject())
-    .pipe(gulp.dest("../test/"));
-
-    /*gulp.src("../test/*.ts")
-    .pipe(tsProject2())
-    .pipe(gulp.dest("../test/"))*/
-
+    .pipe(gulp.dest("dist/"));
 });
 
 gulp.task("test", () => {
    gulp.src("../test/tests.js").watch("../test/*.js").pipe(mocha());
 });
 
-
-gulp.task("tests", gulp.series("default", "test"), (done) => {
+gulp.task("test-ts", (done) => {
+    gulp.src("test/tests.ts").pipe(mocha({
+        require: ["ts-node/register"]
+    }));
     done();
 });
+
+
+gulp.task("tests", gulp.series("default", "test"));
