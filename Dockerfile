@@ -5,13 +5,15 @@ RUN adduser -S node && apk add --no-cache --update nodejs npm make && mkdir /nod
 
 USER node
 
+FROM base_image as install
+
 COPY package*.json ./
 
 # npm ci es especifico para entornos CI
 RUN npm ci && npm cache clean --force
 
 # Multi-stage: Optimizacion imagen
-FROM base_image AS install
+FROM base_image
 
 # Etapa anterior
 COPY --from=base_image /node_modules /node_modules
