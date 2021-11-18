@@ -179,6 +179,8 @@ Ejecutamos los test con el contenedor creado, y obtenemos que se pasan satisfact
 
 ![Docker Tests](https://github.com/LCinder/Moon-vie/blob/master/docs/img/docker-test.PNG)
 
+También se puede comprobar en la
+[_action_](https://github.com/LCinder/Moon-vie/runs/4250487253?check_suite_focus=true#step:7:26) creada para desplegar y ejecutar el contenedor:
 
 
 ## Contenedor Subido y Actualización Automática
@@ -201,10 +203,11 @@ on:
       
 jobs:
   push_to_registry:
-    name: Push Docker image to Docker Hub
-    runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, '[docker deploy]')
-    steps:
+     - name: Push Docker image to Docker Hub
+        runs-on: ubuntu-latest
+        if: contains(github.event.head_commit.message, '[docker deploy]')
+        steps:
+        ...
 ```
 
 Las versiones utilizadas para los _webhooks_ y obtenidas de los repositorios de _docker_ son
@@ -217,7 +220,8 @@ las siguientes:
 Se utilizan esas versiones con esos tag's específicos ya que son las más adecuadas [según el mismo repositorio](https://github.com/docker/login-action)
 y las más utilizadas por la comunidad.
 
-Además, se ha creado dentro del mismo _webhook_ un _step_ para subir la imagen también a
+Además, se ha creado dentro del mismo _webhook_ un _step_ tanto para ejecutar el contenedor una vez desplegado
+como para subir la imagen también a
 *GitHub Container Registry,* incluyendo lo siguiente:
 ```
 - name: Login to GHCR
@@ -234,6 +238,9 @@ Además, se ha creado dentro del mismo _webhook_ un _step_ para subir la imagen 
             ghcr.io/lcinder/moon-vie
         tags: |
             latest
+
+- name: Run docker tests
+    run: docker run -t -v `pwd`:/app/test lcinder/moon-vie
 ```
 
 Modificando los _tags y las _images_ a hacer _push_
