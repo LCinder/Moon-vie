@@ -6,4 +6,4 @@ lenguaje:
 test:
   - test/tests.ts
 fichero_tareas:
-  - src/gulpfile.js
+  - gulpfile.js
