@@ -4,11 +4,19 @@ const ts = require("gulp-typescript");
 const mocha = require("gulp-mocha");
 
 gulp.task("default", () => {
-    const tsProject = ts.createProject("../tsconfig.json");
+    const tsProject = ts.createProject(".tsconfig.json");
 
     return gulp.src("src/*.ts")
     .pipe(tsProject())
     .pipe(gulp.dest("dist/"));
+});
+
+gulp.task("transpile-test", () => {
+    const tsProject = ts.createProject("./tsconfig.json");
+
+    return gulp.src("tests/*.ts")
+        .pipe(tsProject())
+        .pipe(gulp.dest("dist/"));
 });
 
 gulp.task("test", () => {
@@ -23,4 +31,4 @@ gulp.task("test-ts", (done) => {
 });
 
 
-gulp.task("tests", gulp.series("default", "test"));
+gulp.task("tests", gulp.series("default", "transpile-test", "test"));
