@@ -51,11 +51,20 @@ de ser completamente personalizable.
 
 Para la creación de las imágenes, vamos a partir de las anteriores y crearemos diferentes archivos de configuración 
 (Dockerfiles) para crear diferentes imágenes docker que utilicen las distintas imágenes base anteriormente comentadas, 
-y las analizaremos y compararemos en función de 2 restricciones: espacio y tiempo.
+y las analizaremos y compararemos **en función de 2 restricciones: espacio y tiempo.**
+
+¿Por qué reducir en espacio?
+Principalmente por 3 temas:
+- Seguridad, ya que las imágenes más pequeñas vienen con menos bibliotecas,
+lo cuál permite menos agujeros de seguridad. Esto se observa en DockerHub, donde las imágenes más grandes
+están predispuestas a tener más vulnerabilidades.
+- Rendimiento y eficiencia: En construcción y en uso de memoria.
+- Mantenibilidad: Se tiene más control cuando se usan menos bibliotecas, ya que es más fácil
+administrarlas.
 
 
 Los archivos Dockerfile creados mantienen conjuntos de operaciones en común, ya que desde su creación
-se preetnde optimziarlos al máximo y aplicar una serie de buenas prácticas que se comentarán posteriormente.
+se pretende optimizarlos al máximo y aplicar una serie de buenas prácticas que se comentarán posteriormente.
 
 En concreto, el Dockerfile utilizado para la imagen _alpine_ es el siguiente: 
 
@@ -67,23 +76,27 @@ RUN adduser -S node && apk add --no-cache --update nodejs npm make && mkdir /nod
 
 USER node
 
+# Multi-stage: Optimizacion imagen al isntalar en imagen intermedia
+# los modulos
+FROM base_image as install
+
 COPY package*.json ./
 
 # npm ci es especifico para entornos CI
 RUN npm ci && npm cache clean --force
 
-# Multi-stage: Optimizacion imagen
-FROM base_image AS install
+FROM base_image
 
-# Etapa anterior
-COPY --from=base_image /node_modules /node_modules
+# De la etapa anterior se copia la carpeta con los modulos
+COPY --from=install /node_modules /node_modules
 
 # Se cambia el directorio de trabajo
 WORKDIR /app/test
 
 ENV PATH=/node_modules/.bin:$PATH
 
-CMD ["gulp", "--gulpfile", "src/gulpfile.js", "tests"]
+CMD ["gulp", "test-ts"]
+
 
  ```
 
@@ -133,7 +146,7 @@ obteniendo la siguiente tabla:
 | node | 388.5s |  1.19GB | 3.3s |
 | node:slim | 150.5s | 440MB | 2.87s |
 | node:alpine | 111.1s |  367MB | 3.33s |
-| alpine | 111.1s |  144MB | 3.2s |
+| alpine | 69s |  144MB | 3.2s |
 
 Las imágenes están ordenadas por contenido de las mismas, siendo _node_ la que contiene
 cualquier paquete para ejecutar cualquier imagen y _alpine_ la que no contiene prácticamente nada,
@@ -151,9 +164,21 @@ que aunque es un **11%** más lenta, _alpine_ es un **305%** más ligera que _no
 lo cuál implica mucha más diferencia, y como los _test_ se ejecutan rápidamente, preferimos la imagen más ligera,
 siendo **alpine** la elegida.
 
+
+Los test se han ejecutado directamente desde el script tests.ts sin transpilarlo, ya que al no tener
+permisos de escritura en el directorio /app/test/ se intentó crear los archivos .js en otro llamado
+/app/dist/. Aunque ésto sí funciona se descartó, ya que era necesario o bien copiar el archivo movies.json
+(datos de películas) al mismo
+directorio /app/dist/ ya que si no no lo encontraba, o bien cambiar la ruta desde la que se importa
+movies.json  en todos los archivos que lo utilizan lo cuál no era buena idea, ya que si no en local
+no funcionaría al ser directorios diferentes. Como existe un plugin llamado _gulp-mocha_ que permite
+ejecutar los test desde typescript, se optó por éste método, ya que no se veían factible los anteriores.
+
+
 Ejecutamos los test con el contenedor creado, y obtenemos que se pasan satisfactoriamente:
 
 ![Docker Tests](https://github.com/LCinder/Moon-vie/blob/master/docs/img/docker-test.PNG)
+
 
 
 ## Contenedor Subido y Actualización Automática
@@ -162,9 +187,9 @@ Además, para que se suba la imagen automáticamente cada vez que se actualice e
 nos ayudamos de los _webhooks_ de _GitHub Actions._
 
 Antes estaba puesto a que se lanzaran cuando se cambiaba el Dockerfile, 
-pero he visto más necesario que se lance cuando e cualquier commit se incluye `[docker deploy]` cuando se hace push a la rama master.
+pero he visto más necesario que se lance cuando desde cualquier commit se incluye `[docker deploy]` cuando se hace push a la rama master.
 
-Es necesario antes haber proporcionando el _username_ y la contraseña en el apartado _secrets_ del repositorio.
+Es necesario antes haber proporcionado el _username_ y la contraseña en el apartado _secrets_ del repositorio.
 
 ```
 name: Publish Docker image
