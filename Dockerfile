@@ -21,4 +21,4 @@ WORKDIR /app/test
 
 ENV PATH=/node_modules/.bin:$PATH
 
-CMD ["gulp", "--gulpfile", "src/gulpfile.js", "tests"]
+CMD ["gulp", "test-ts"]
