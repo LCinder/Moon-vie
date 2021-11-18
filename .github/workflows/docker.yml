@@ -3,7 +3,7 @@
 # condiciones de servicio, políticas de privacidad y documentación de soporte
 # documentación.
 
-name: Publish Docker image
+name: Publish Docker image and run
 
 on:
   push:
@@ -49,3 +49,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Run docker tests
+        run: docker run -t -v `pwd`:/app/test lcinder/moon-vie
