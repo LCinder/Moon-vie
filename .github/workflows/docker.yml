@@ -40,7 +40,7 @@ jobs:
             lcinder/moon-vie
             ghcr.io/lcinder/moon-vie
           tags: |
-            1
+            latest
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
