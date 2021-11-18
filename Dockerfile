@@ -5,6 +5,8 @@ RUN adduser -S node && apk add --no-cache --update nodejs npm make && mkdir /nod
 
 USER node
 
+# Multi-stage: Optimizacion imagen al isntalar en imagen intermedia
+# los modulos
 FROM base_image as install
 
 COPY package*.json ./
@@ -12,11 +14,10 @@ COPY package*.json ./
 # npm ci es especifico para entornos CI
 RUN npm ci && npm cache clean --force
 
-# Multi-stage: Optimizacion imagen
 FROM base_image
 
-# Etapa anterior
-COPY --from=base_image /node_modules /node_modules
+# De la etapa anterior se copia la carpeta con los modulos
+COPY --from=install /node_modules /node_modules
 
 # Se cambia el directorio de trabajo
 WORKDIR /app/test
