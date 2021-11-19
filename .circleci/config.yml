@@ -1,11 +1,10 @@
 version: 2
 jobs:
   build:
-    machine: true
+    docker:
+      - image: lcinder/moon-vie
     steps:
-      - run:
-          name: Pulling image
-          command: docker pull lcinder/moon-vie
+      - checkout
       - run:
           name: Running container
-          command: docker run -t -v $(pwd):/app/test lcinder/moon-vie
+          command: gulp test-ts
