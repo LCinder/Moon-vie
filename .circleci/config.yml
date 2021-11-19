@@ -1,11 +1,10 @@
 version: 2
 jobs:
-  pull:
-    steps:
-      - run:
-          name: Pulling image
-          command: docker pull lcinder/moon-vie
+  build:
+    docker:
+      - image: lcinder/moon-vie
 
+    steps:
       - run:
           name: Running container
           command: docker run -t -v `pwd`:/app/test lcinder/moon-vie
