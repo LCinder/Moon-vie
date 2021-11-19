@@ -8,4 +8,4 @@ jobs:
           command: docker pull lcinder/moon-vie
       - run:
           name: Running container
-          command: docker run -t -v `pwd`:/app/test lcinder/moon-vie
+          command: docker run -t -v $(pwd):/app/test lcinder/moon-vie
