@@ -2,6 +2,7 @@
 const gulp = require("gulp");
 const ts = require("gulp-typescript");
 const mocha = require("gulp-mocha");
+const eslint = require("gulp-eslint");
 
 gulp.task("default", () => {
     const tsProject = ts.createProject(".tsconfig.json");
@@ -30,5 +31,12 @@ gulp.task("test-ts", (done) => {
     done();
 });
 
+gulp.task("lint", () => {
+    return gulp.src("**/*.ts")
+        .pipe(eslint({
+            configFile: ".eslintrc"
+        }))
+        .pipe(eslint.format());
+});
 
 gulp.task("tests", gulp.series("default", "transpile-test", "test"));
