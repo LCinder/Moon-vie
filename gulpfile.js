@@ -2,6 +2,7 @@
 const gulp = require("gulp");
 const ts = require("gulp-typescript");
 const mocha = require("gulp-mocha");
+const istanbul = require("gulp-istanbul");
 const eslint = require("gulp-eslint");
 
 gulp.task("default", () => {
@@ -31,6 +32,15 @@ gulp.task("test-ts", (done) => {
     done();
 });
 
+gulp.task("test-ts:coverage", (done) => {
+    gulp.src("test/*.ts").pipe(mocha({
+        require: ["ts-node/register"]
+    }))
+    .pipe(istanbul())
+    .pipe(istanbul.writeReports());
+    done();
+});
+
 gulp.task("lint", () => {
     return gulp.src("**/*.ts")
         .pipe(eslint({
@@ -38,5 +48,6 @@ gulp.task("lint", () => {
         }))
         .pipe(eslint.format());
 });
+
 
 gulp.task("tests", gulp.series("default", "transpile-test", "test"));
