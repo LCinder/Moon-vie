@@ -1,0 +1,25 @@
+# This workflow uses actions that are not certified by GitHub.
+# Estas las proporcionan entidades terceras y las gobiernan
+# condiciones de servicio, políticas de privacidad y documentación de soporte
+# documentación.
+
+name: Lint code
+
+on:
+  push:
+    paths:
+      "README.md"
+
+jobs:
+  linter:
+    name: Install linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Run linter
+        run: gulp lint
