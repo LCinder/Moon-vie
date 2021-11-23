@@ -59,7 +59,14 @@ commit indica como se ha solucionado
   - `git tag -a v1.0-MV -m "Release"`
 ## Travis
   - before_install: Instalar test y task runner
-
+  - Logs: Registros de servicio, peticiones, seguridad, etc.
+  - Arquitectura K: Se trabaja solo con strings de datos, sirve
+para la escalabilidad
+  - Todos los lenguajes están formados por :
+    - Sintaxis y semantica
+    - Modelos
+    - Libreria basica
+  - 
 ---
 
 ### 
