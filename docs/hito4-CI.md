@@ -126,7 +126,10 @@ Otra tarea que se ha visto necesaria para seguir las buenas prácticas de desarr
 el `coverage code,` es decir, el nivel de _cobertura_ de los tests para el código que tenemos.
 Indica qué porcentaje de funcionalidad abarcan los tests, donde queremos que sea cuanto mayor mejor,
 ya que indicarán que nuestros tests son realmente útiles, necesarios y se puede confiar en que si se pasan, 
-el riesgo de error será muy bajo.
+el riesgo de error será muy bajo. He tenido que utilizar el plugin de `gulp` llamado
+`shell` ya que se intentó utilizar `gulp.istanbul` pero surgía un bug de que se
+pasaban los tests al 100% cuando en verdad no se ejecutaba ningún test, al parecer es un
+bug que se comenta en este [hilo](https://github.com/SBoudrias/gulp-istanbul/issues/37) y no he podido solucionar.
 
 Para ello se ha instalado el módulo `nyc` de `istambul.js` que nos permite justamente comprobar
 la cobertura del código y funciona muy bien con `mocha,` nuestro _test runner._
@@ -180,3 +183,4 @@ tarea de `gulp`
 
 
 ![Buddy CI - 4](https://github.com/LCinder/Moon-vie/blob/master/docs/img/buddy-4.PNG)
+
