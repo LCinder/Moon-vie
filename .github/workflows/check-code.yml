@@ -3,7 +3,7 @@
 # condiciones de servicio, políticas de privacidad y documentación de soporte
 # documentación.
 
-name: Lint code
+name: Code check
 
 on:
   push:
@@ -23,3 +23,15 @@ jobs:
 
       - name: Run linter
         run: gulp lint
+  coverage:
+    name: Install nyc
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Run coverage tests
+        run: gulp test-ts:coverage
