@@ -1,5 +1,6 @@
 import movies from "../data/movies.json";
 import {Movie} from "./movie"
+import {IMovie} from "./IMovie";
 
 
 export class Movies {
@@ -9,8 +10,8 @@ export class Movies {
         this._movies = movies;
     }
 
-    find(title: string): any {
-        let res: any = this._movies.movies.find((e: { original_title: string; }) => {
+    find(title: string): IMovie {
+        const res: IMovie = this._movies.movies.find((e: { original_title: string; }) => {
             if(e.original_title === title) {
                 return e;
             }
@@ -18,7 +19,7 @@ export class Movies {
         return res;
     }
 
-    convertJSON2Movie(json: any): Movie {
+    convertJSON2Movie(json: IMovie): Movie {
         const movie = new Movie();
         if (json !== undefined) {
             movie.title = json.title;
