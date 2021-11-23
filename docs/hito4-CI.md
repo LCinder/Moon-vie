@@ -8,7 +8,7 @@
 
 Para la elección del sistema CI se ha realizado una búsqueda para ver qué sistemas existen, qué ofrecen, diferencias, 
 lenguajes y funcionalidades que soportan, etc.
-Para ello, y teniendo en cuenta que `Travis` se da por hecho que se va a usar, encontramos:
+Para ello encontramos:
 - Shippable: Por desgracia este sistema ya no existe. Funcionaba muy bien y era fácil de configurar, pero
 al parecer ha sido absorbido por JFrog.
 - JFrog: Sistema que permite centralizar artifactorys y dependencias, estando más enfocado por tanto
@@ -16,9 +16,14 @@ para Java y sistemas que usen Maven. Hay que solicitar una demo que además tard
 a mí no me han aceptado todavía)
 - Jenkins: También está más enfocado para Java. Hay que descargar un ejecutable para correrlo
 localmente, por lo que la configuración es más complicada.
+- Travis: Permite configuración sencilla, conexión con repositorio de GitHub, pero
+en IV gasté todos los créditos, por lo que no es posible utilizarla.
 - Circle-CI: Sistema que destaca mucho más que cualquier otro (se posiciona siempre el primero en las búsquedas)
 y permite la ejecución de contenedores docker, lo que sumado a la fácil configuración y la obtención de créditos
 suficientes para su uso hace que sea la mejor elección.
+- Buddy-CI: Es un sistema de CI bastante grande, donde se permite también CD
+entre otras cosas, el plan gratuito es muy amplio y la utilización es muy diferente
+a la de cualquier otro CI ya que es más cercano al usuario. Se verá posteriormente.
 
 ### Circle-CI
 Circle-CI dispone de una característica muy útil, los `orbs,` que son fragmentos de código reutilizable
@@ -148,3 +153,30 @@ Con la única diferencia del comando a ejecutar.
 Comprobamos que funciona en la siguiente imagen
 
 ![Funciona Coverage CI](https://github.com/LCinder/Moon-vie/blob/master/docs/img/coverageg-ci-funciona.PNG)
+
+
+### Otro más: Buddy-CI
+
+Este sistema es curioso, ya que como se comentó antes es más cercano al usuario
+tanto en la configuración como en la ejecución de cualquier _workflow._
+
+La configuración se realiza de forma muy sencilla:
+- Primero hay que autorizar a Buddy-CI a aceder a nuestros repositorios
+
+![Buddy CI - 1](https://github.com/LCinder/Moon-vie/blob/master/docs/img/buddy-1.PNG)
+
+Una vezz autorizado, nos lleva a un _dashboard_ donde mediante una UI podemos crear tareas con diferentes opciones
+
+![Buddy CI - 2](https://github.com/LCinder/Moon-vie/blob/master/docs/img/buddy-2.PNG)
+
+Automáticamente nos detectará cualquier módulo, etc. en nuestro repositorio, en mi caso
+me recomienda crear tareas para `gulp` o `docker` con una visita guiada que facilita todo mucho,
+y un editor de código que automáticamente nos rellena con instrucciones comunes, como `npm install`
+
+Posteriormente a escribir un _workflow_ nos muestra gráficamente cómo está ejecutándose, 
+qué módulo corresponde a ese _workflow_ etc. En la siguiente imagen se ve como detecta que se ejecuta una
+tarea de `gulp`
+
+
+
+![Buddy CI - 4](https://github.com/LCinder/Moon-vie/blob/master/docs/img/buddy-4.PNG)
