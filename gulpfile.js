@@ -1,8 +1,8 @@
 
 const gulp = require("gulp");
 const ts = require("gulp-typescript");
+const shell = require("gulp-shell");
 const mocha = require("gulp-mocha");
-const istanbul = require("gulp-istanbul");
 const eslint = require("gulp-eslint");
 
 gulp.task("default", () => {
@@ -33,11 +33,8 @@ gulp.task("test-ts", (done) => {
 });
 
 gulp.task("test-ts:coverage", (done) => {
-    gulp.src("test/*.ts").pipe(mocha({
-        require: ["ts-node/register"]
-    }))
-    .pipe(istanbul())
-    .pipe(istanbul.writeReports());
+    gulp.src("test/*.ts")
+    .pipe(shell("nyc mocha --require ts-node/register test/*.ts"));
     done();
 });
 
