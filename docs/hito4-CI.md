@@ -11,11 +11,11 @@ lenguajes y funcionalidades que soportan, etc.
 Para ello encontramos:
 - Shippable: Por desgracia este sistema ya no existe. Funcionaba muy bien y era fácil de configurar, pero
 al parecer ha sido absorbido por JFrog.
-- JFrog: Sistema que permite centralizar artifactorys y dependencias, estando más enfocado por tanto
+- JFrog: Sistema que permite centralizar _artifactorys_ y dependencias, estando más enfocado por tanto
 para Java y sistemas que usen Maven. Hay que solicitar una demo que además tarda varios días (o por lo menos
 a mí no me han aceptado todavía)
 - Jenkins: También está más enfocado para Java. Hay que descargar un ejecutable para correrlo
-localmente, por lo que la configuración es más complicada.
+localmente (no hay versión en cloud), por lo que la configuración es más complicada.
 - Travis: Permite configuración sencilla, conexión con repositorio de GitHub, pero
 en IV gasté todos los créditos, por lo que no es posible utilizarla.
 - Circle-CI: Sistema que destaca mucho más que cualquier otro (se posiciona siempre el primero en las búsquedas)
@@ -23,7 +23,7 @@ y permite la ejecución de contenedores docker, lo que sumado a la fácil config
 suficientes para su uso hace que sea la mejor elección.
 - Buddy-CI: Es un sistema de CI bastante grande, donde se permite también CD
 entre otras cosas, el plan gratuito es muy amplio y la utilización es muy diferente
-a la de cualquier otro CI ya que es más cercano al usuario. Se verá posteriormente.
+a la de cualquier otro CI, ya que es más cercano al usuario, disponiendo de una GUI. Se verá posteriormente.
 
 ### Circle-CI
 Circle-CI dispone de una característica muy útil, los `orbs,` que son fragmentos de código reutilizable
@@ -65,7 +65,7 @@ que es la última disponible actualmente y otorga muchas funcionalidades nuevas,
 anteriormente.
 
 Luego se indica los `jobs` o trabajos a realizar, en este caso como vamos a utilizar docker
-incluimos los campos `build` y `docker` y dentro de éste la imagen que queramos usar, la última
+incluimos los campos `build` y `docker` y dentro de este la imagen que queramos usar, la última
 imagen que pasa nuestros tests. Estamos usando la imagen pre-diseñada de Circle-CI para docker como dijimos antes, 
 donde le indicamos que construya nuestra imagen (con `build`) como paso previo a realizar cualquier acción.
 
@@ -161,14 +161,16 @@ Comprobamos que funciona en la siguiente imagen
 ### Otro más: Buddy-CI
 
 Este sistema es curioso, ya que como se comentó antes es más cercano al usuario
-tanto en la configuración como en la ejecución de cualquier _workflow._
+tanto en la configuración como en la ejecución de cualquier _workflow,_ y dispone
+de una GUI para que sea más ameno su uso, además de otras configuraciones como trigger en un click además
+de push, lo que lo hase sencillo de empezar a utilizar.
 
 La configuración se realiza de forma muy sencilla:
-- Primero hay que autorizar a Buddy-CI a aceder a nuestros repositorios
+- Primero hay que autorizar a Buddy-CI a acceder a nuestros repositorios
 
 ![Buddy CI - 1](https://github.com/LCinder/Moon-vie/blob/master/docs/img/buddy-1.PNG)
 
-Una vezz autorizado, nos lleva a un _dashboard_ donde mediante una UI podemos crear tareas con diferentes opciones
+Una vez autorizado, nos lleva a un _dashboard_ donde mediante una UI podemos crear tareas con diferentes opciones
 
 ![Buddy CI - 2](https://github.com/LCinder/Moon-vie/blob/master/docs/img/buddy-2.PNG)
 
@@ -184,3 +186,16 @@ tarea de `gulp`
 
 ![Buddy CI - 4](https://github.com/LCinder/Moon-vie/blob/master/docs/img/buddy-4.PNG)
 
+Y podemos ver cómo los sistemas de CI han pasado satisfactoriamente
+
+
+![CI Funciona](https://github.com/LCinder/Moon-vie/blob/master/docs/img/ci-funciona.PNG)
+
+### Conclusión - ¿Cuál es mejor?
+Aunque los 3 sistemas (Circle-CI, Buddy-CI y GitHub Actions) trabajan bastante bien,
+se puede hacer la siguiente distinción:
+
+- **Más fácil de utilizar:** Buddy sin duda, si se tiene manejo con GitHub entonces GHA no dará problemas
+- **Más sencillo de configurar :** Buddy, aunque GHA le pisa los talones, ya que ofrece más funcionalidades
+- **Más completo:** GitHub Actions, ya que dispone de un _marketplace_ con distintas _workflows_ a poder usar fácilmente,
+- y no dispone de créditos que se acaben (Buddy sí pero la versión de prueba da suficiente a corto plazo, pero no a largo plazo)
