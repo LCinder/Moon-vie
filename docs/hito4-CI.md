@@ -170,15 +170,15 @@ La configuración se realiza de forma muy sencilla:
 
 ![Buddy CI - 1](https://github.com/LCinder/Moon-vie/blob/master/docs/img/buddy-1.PNG)
 
-Una vez autorizado, nos lleva a un _dashboard_ donde mediante una UI podemos crear tareas con diferentes opciones
+- Una vez autorizado, nos lleva a un _dashboard_ donde mediante una UI podemos crear tareas con diferentes opciones
 
 ![Buddy CI - 2](https://github.com/LCinder/Moon-vie/blob/master/docs/img/buddy-2.PNG)
 
-Automáticamente nos detectará cualquier módulo, etc. en nuestro repositorio, en mi caso
+- Automáticamente nos detectará cualquier módulo, etc. en nuestro repositorio, en mi caso
 me recomienda crear tareas para `gulp` o `docker` con una visita guiada que facilita todo mucho,
 y un editor de código que automáticamente nos rellena con instrucciones comunes, como `npm install`
 
-Posteriormente a escribir un _workflow_ nos muestra gráficamente cómo está ejecutándose, 
+- Posteriormente a escribir un _workflow_ nos muestra gráficamente cómo está ejecutándose, 
 qué módulo corresponde a ese _workflow_ etc. En la siguiente imagen se ve como detecta que se ejecuta una
 tarea de `gulp`
 
@@ -186,7 +186,7 @@ tarea de `gulp`
 
 ![Buddy CI - 4](https://github.com/LCinder/Moon-vie/blob/master/docs/img/buddy-4.PNG)
 
-Y podemos ver cómo los sistemas de CI han pasado satisfactoriamente
+- Y podemos ver cómo los sistemas de CI han pasado satisfactoriamente
 
 
 ![CI Funciona](https://github.com/LCinder/Moon-vie/blob/master/docs/img/ci-funciona.PNG)
