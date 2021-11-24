@@ -197,6 +197,7 @@ Aunque los 3 sistemas (Circle-CI, Buddy-CI y GitHub Actions) trabajan bastante b
 se puede hacer la siguiente distinción:
 
 - **Más fácil de utilizar:** Buddy sin duda, si se tiene manejo con GitHub entonces GHA no dará problemas
-- **Más sencillo de configurar :** Buddy, aunque GHA le pisa los talones, ya que ofrece más funcionalidades
+- **Más sencillo de configurar:** Buddy, aunque GHA le pisa los talones, ya que ofrece más funcionalidades
 - **Más completo:** GitHub Actions, ya que dispone de un _marketplace_ con distintas _workflows_ a poder usar fácilmente,
-- y no dispone de créditos que se acaben (Buddy sí pero la versión de prueba da suficiente a corto plazo, pero no a largo plazo)
+- y no dispone de créditos que se acaben (Buddy sí pero la versión de prueba da suficiente a corto plazo, pero no a largo plazo),
+Circle-CI no dispone de triggers condicionales por ejemplo, lo cuál es bastante necesario
