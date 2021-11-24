@@ -101,14 +101,14 @@ on:
 
 jobs:
   linter:
-    name: Install linter
+    name: Run linter
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Run linter
         run: gulp lint
@@ -139,14 +139,14 @@ Los pasos a seguir son muy parecidos a los utilizados con el _linter_
 
 ```
 coverage:
-    name: Install nyc
+    name: Run coverage
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: npm i
+        run: npm ci
 
       - name: Run coverage tests
         run: gulp test-ts:coverage
