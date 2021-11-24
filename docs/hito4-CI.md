@@ -119,7 +119,7 @@ nos permite acceder al repositorio, posteriormente se instalan las dependencias 
 ejecuta la tarea correspondiente, en este caso `gulp lint.` Se comprueba que el _workflow_ funciona en la siguiente imagen
 
 
-![Funciona Lint CI](https://github.com/LCinder/Moon-vie/blob/master/docs/img/lint-ci-funciona.PNG)
+![Funciona Lint CI](https://github.com/LCinder/Moon-vie/blob/master/docs/img/lint-ci-funciona.png)
 
 
 Otra tarea que se ha visto necesaria para seguir las buenas prácticas de desarrollo es la de comprobar
