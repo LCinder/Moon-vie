@@ -1,6 +1,5 @@
 
 import "mocha";
-import chai from "chai";
 import {assert} from "chai";
 import {Movies} from "../src/movies";
 import {Movie} from "../src/movie";
@@ -41,6 +40,7 @@ describe("Quiero obtener informacion de una pelicula", () => {
         });
     });
 });
+
 describe("Quiero saber la clasificacion tematica de una pelicula", () => {
     const keywords = movie.extractKeywords();
 

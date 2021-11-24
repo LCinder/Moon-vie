@@ -1,0 +1,10 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: lcinder/moon-vie
+    steps:
+      - checkout
+      - run:
+          name: Running container
+          command: gulp test-ts

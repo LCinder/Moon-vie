@@ -1,10 +1,12 @@
 
 const gulp = require("gulp");
 const ts = require("gulp-typescript");
+const shell = require("gulp-shell");
 const mocha = require("gulp-mocha");
+const eslint = require("gulp-eslint");
 
 gulp.task("default", () => {
-    const tsProject = ts.createProject(".tsconfig.json");
+    const tsProject = ts.createProject("tsconfig.json");
 
     return gulp.src("src/*.ts")
     .pipe(tsProject())
@@ -12,15 +14,15 @@ gulp.task("default", () => {
 });
 
 gulp.task("transpile-test", () => {
-    const tsProject = ts.createProject("./tsconfig.json");
+    const tsProject = ts.createProject("tsconfig.json");
 
-    return gulp.src("tests/*.ts")
+    return gulp.src("test/*.ts")
         .pipe(tsProject())
         .pipe(gulp.dest("dist/"));
 });
 
 gulp.task("test", () => {
-   gulp.src("../test/tests.js").watch("../test/*.js").pipe(mocha());
+   return gulp.src("dist/tests.js").pipe(mocha());
 });
 
 gulp.task("test-ts", (done) => {
@@ -28,6 +30,20 @@ gulp.task("test-ts", (done) => {
         require: ["ts-node/register"]
     }));
     done();
+});
+
+gulp.task("test-ts:coverage", (done) => {
+    gulp.src("test/*.ts")
+    .pipe(shell("nyc mocha --require ts-node/register test/*.ts"));
+    done();
+});
+
+gulp.task("lint", () => {
+    return gulp.src("**/*.ts")
+        .pipe(eslint({
+            configFile: ".eslintrc"
+        }))
+        .pipe(eslint.format());
 });
 
 
