@@ -1,12 +1,4 @@
 version: 2.1
-orbs:
-  path-filtering: circleci/path-filtering@0.0.1
-workflows:
-  generate-config:
-    jobs:
-      - path-filtering/filter:
-          mapping:
-            README.md
 jobs:
   build:
     docker:
