@@ -116,7 +116,8 @@ jobs:
 
 Donde se utiliza la imagen `ubuntu` como imagen base, la action `actions/checkout@v2` que
 nos permite acceder al repositorio, posteriormente se instalan las dependencias necesarias y se
-ejecuta la tarea correspondiente, en este caso `gulp lint.` Se comprueba que el _workflow_ funciona en la siguiente imagen
+ejecuta la tarea correspondiente, en este caso `gulp lint.` Se comprueba que el _workflow_ funciona en la siguiente imagen,
+donde nos advierte de 4 warnings en el código, (obtenidos para que se vea que funciona)
 
 
 ![Funciona Lint CI](https://github.com/LCinder/Moon-vie/blob/master/docs/img/lint-ci-funciona.png)
