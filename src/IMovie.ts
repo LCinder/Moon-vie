@@ -9,7 +9,7 @@ export interface IMovie {
     poster_path: string,
     backdrop_path: string,
     genre_ids: number [],
-    release_date: Date,
+    release_date: string,
     title: string,
     video: boolean,
     vote_average: number,
