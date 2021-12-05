@@ -3,3 +3,4 @@ CC.iml
 src/*.js
 node_modules
 src/environment.ts
+.nyc_output
