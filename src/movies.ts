@@ -10,9 +10,42 @@ export class Movies {
         this._movies = movies;
     }
 
+
+
     find(title: string): IMovie {
-        const res: IMovie = this._movies.movies.find((e: { original_title: string; }) => {
-            if(e.original_title === title) {
+        const containsYear: RegExpMatchArray | null = title.match(/\([0-9]{4}\)/g);
+        let titleParsed: string;
+        let year: RegExpMatchArray | null;
+
+        if (containsYear) {
+            titleParsed = title.replace(/\s/g, "");
+            year = title.match(/\([0-9]{4}\)/g);
+            titleParsed = titleParsed.replace(/\([0-9]{4}\)/g, "");
+        }
+        else
+            titleParsed = title.replace(/\s/g, "");
+
+        const matchTitle: any = (element: IMovie) => {
+            const originalTitleParsed: string = element.original_title.replace(/\s/g, "");
+            return originalTitleParsed === titleParsed;
+        };
+
+        const containsTitle: any = (element: IMovie) => {
+            const originalTitleParsed: string = element.original_title.replace(/\s/g, "");
+            const elementYear: RegExpMatchArray | null = element.release_date.match(/[0-9]{4}/g);
+            let yearsEqual: boolean = false;
+
+            if (year) {
+                if (elementYear) {
+                    yearsEqual = true;
+                }
+            }
+            return (originalTitleParsed.includes(titleParsed)
+            && yearsEqual);
+        };
+
+        const res: IMovie = this._movies.movies.find((e: IMovie) => {
+            if(matchTitle(e) || containsTitle(e)) {
                 return e;
             }
         });
