@@ -44,3 +44,13 @@ describe("GET /movies/Hobbit/keywords", () => {
         assert.equal(res.statusCode, 200);
     });
 });
+
+describe("GET /movies/HobbitNoExiste/keywords", () => {
+    it("Deberia devolver error 404 y mensaje pelicula no existe", async () => {
+        const res = await server.inject({
+            url: "/movies/HobbitNoExiste(2012)/keywords"
+        });
+        assert.equal(JSON.parse(res.body).error, "Movie does not exist");
+        assert.equal(res.statusCode, 404);
+    });
+});
