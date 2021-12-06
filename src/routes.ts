@@ -2,8 +2,15 @@
 import {Movie} from "./movie" ;
 import {Movies} from "./movies";
 import fastify, {FastifyRequest} from "fastify";
-
-export const server = fastify({logger: true});
+const optionsLogger = {
+    logger: {
+        prettyPrint: {
+            translateTime: "dd-mm-yyyy HH:MM:ss",
+            ignore: "pid,reqId,hostname,responseTime,req,res",
+            messageFormat: "{msg} [{req.method} {req.url} {res.statusCode}]"
+        }
+    }};
+export const server = fastify(optionsLogger);
 /**********************************************************************************************************************/
 /**********************************************************************************************************************/
 server.get("/status", async (request, reply) => {
@@ -14,6 +21,7 @@ server.get("/status", async (request, reply) => {
 server.get("/movies", async (request, reply) => {
     try {
         const movies = new Movies();
+
         request.log.info("Movies sent");
         reply.code(200).send(movies.movies);
     } catch(err: any) {
@@ -27,6 +35,7 @@ server.get("/movies/:movie", async (request: any, reply) => {
     try {
         const movies = new Movies();
         const movie: Movie = new Movie(movies.convertJSON2Movie(movies.find(request.params.movie)));
+
         request.log.info(`Movie ${movie.title} sent`);
         reply.code(200).send(JSON.stringify(movie));
     } catch(err: any) {
@@ -50,4 +59,4 @@ server.get("/movies/:movie/keywords", async (request: any, reply) => {
 });
 /**********************************************************************************************************************/
 /**********************************************************************************************************************/
-server.listen(5001)
+//server.listen(5001)
