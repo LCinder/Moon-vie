@@ -2,6 +2,8 @@
 import {Movie} from "./movie" ;
 import {Movies} from "./movies";
 import fastify from "fastify";
+import {Controller} from "./controller";
+
 const optionsLogger = {
     logger: {
         prettyPrint: {
@@ -10,10 +12,10 @@ const optionsLogger = {
             messageFormat: "{msg} [{req.method} {req.url} {res.statusCode}]"
         }
     }};
+
 export const server = fastify(optionsLogger);
 
-const movies = new Movies();
-let movie: Movie = new Movie();
+const controller = new Controller();
 /**********************************************************************************************************************/
 /**********************************************************************************************************************/
 server.get("/status", async (request, reply) => {
@@ -24,7 +26,7 @@ server.get("/status", async (request, reply) => {
 server.get("/movies", async (request, reply) => {
     try {
         request.log.info("Movies sent");
-        reply.code(200).send(movies.movies);
+        reply.code(200).send(controller.movies);
     } catch(err: any) {
         request.log.error(err.message);
         reply.code(400).send({error: err.message, code: 400});
@@ -34,7 +36,8 @@ server.get("/movies", async (request, reply) => {
 /**********************************************************************************************************************/
 server.get("/movies/:movie", async (request: any, reply) => {
     try {
-        movie = movies.convertJSON2Movie(movies.find(request.params.movie))
+        const movie: Movie = controller.getMovie(request.params.movie);
+
         request.log.info(`Movie ${movie.title} sent`);
         reply.code(200).send(JSON.stringify(movie));
     } catch(err: any) {
@@ -46,8 +49,9 @@ server.get("/movies/:movie", async (request: any, reply) => {
 /**********************************************************************************************************************/
 server.get("/movies/:movie/keywords", async (request: any, reply) => {
     try {
-        movie = movies.convertJSON2Movie(movies.find(request.params.movie))
-        const keywords: string[] = movie.extractKeywords();
+        const movie: Movie = controller.getMovie(request.params.movie);
+        const keywords: string[] = controller.getKeywords(movie);
+
         request.log.info(`Extracted and sent keywords from movie ${movie.title}`);
         reply.code(200).send(JSON.stringify(keywords));
     } catch(err: any) {
