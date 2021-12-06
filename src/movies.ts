@@ -4,13 +4,15 @@ import {IMovie} from "./IMovie";
 
 
 export class Movies {
-    private _movies: any;
+     private readonly _movies: any;
 
     constructor() {
         this._movies = movies;
     }
 
-
+    get movies() {
+        return this._movies;
+    }
 
     find(title: string): IMovie {
         const containsYear: RegExpMatchArray | null = title.match(/\([0-9]{4}\)/g);
@@ -19,7 +21,7 @@ export class Movies {
 
         if (containsYear) {
             titleParsed = title.replace(/\s/g, "");
-            year = title.match(/\([0-9]{4}\)/g);
+            year = title.match(/[0-9]{4}/g);
             titleParsed = titleParsed.replace(/\([0-9]{4}\)/g, "");
         }
         else
@@ -37,7 +39,8 @@ export class Movies {
 
             if (year) {
                 if (elementYear) {
-                    yearsEqual = true;
+                    if (year[0] === elementYear[0])
+                        yearsEqual = true;
                 }
             }
             return (originalTitleParsed.includes(titleParsed)
@@ -67,7 +70,6 @@ export class Movies {
         } else {
             throw new Error("Movie does not exist");
         }
-
     }
 
 }
