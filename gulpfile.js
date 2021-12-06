@@ -22,11 +22,14 @@ gulp.task("transpile-test", () => {
 });
 
 gulp.task("test", () => {
-   return gulp.src("dist/tests.js").pipe(mocha());
+   return gulp.src("dist/*.js").pipe(mocha());
 });
 
 gulp.task("test-ts", (done) => {
     gulp.src("test/tests.ts").pipe(mocha({
+        require: ["ts-node/register"]
+    }));
+    gulp.src("test/api-tests.ts").pipe(mocha({
         require: ["ts-node/register"]
     }));
     done();
