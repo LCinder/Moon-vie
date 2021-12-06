@@ -30,6 +30,7 @@
     "chai": "^4.3.4",
     "eslint": "^8.2.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "fastify": "^3.24.1",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "gulp-eslint": "^6.0.0",
