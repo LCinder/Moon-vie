@@ -3,7 +3,6 @@ import "mocha";
 import {assert} from "chai";
 import {Movies} from "../src/movies";
 import {Movie} from "../src/movie";
-import {server} from "../src/routes";
 
 const movies = new Movies();
 const movieObject = movies.find("The Hobbit: An Unexpected Journey");
