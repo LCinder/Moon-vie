@@ -41,12 +41,20 @@ gulp.task("test-ts:coverage", (done) => {
     done();
 });
 
-gulp.task("lint", () => {
-    return gulp.src("**/*.ts")
-        .pipe(eslint({
-            configFile: ".eslintrc"
-        }))
-        .pipe(eslint.format());
+gulp.task("lint", (done) => {
+    gulp.src("test/*.ts")
+    .pipe(eslint({
+        configFile: ".eslintrc"
+    }))
+    .pipe(eslint.format());
+
+    gulp.src("src/*.ts")
+    .pipe(eslint({
+        configFile: ".eslintrc"
+    }))
+    .pipe(eslint.format());
+
+    done();
 });
 
 
