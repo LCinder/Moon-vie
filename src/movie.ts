@@ -96,14 +96,14 @@ export class Movie {
         const keywords: string [] = [];
         const information: string[] = this._reviews;
         const allStopWords: string[] = this._title.toLowerCase().split(/[\s,:\-\n]+/);
-        let ldaElement: any[];
+        let ldaElement;
 
         allStopWords.concat(stopWords);
         information.push(this._overview);
 
         information.forEach(element => {
             ldaElement = lda(element.match( /[^.!?]+[.!?]+/g ), 5, 10, null, null, null, 123);
-            ldaElement[0].forEach((term: { term: any; }) => {
+            ldaElement[0].forEach((term: { term }) => {
                 if(!allStopWords.includes(term.term))
                     keywords.push(term.term);
             });
