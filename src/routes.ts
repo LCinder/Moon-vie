@@ -1,6 +1,5 @@
 
 import {Movie} from "./movie" ;
-import {Movies} from "./movies";
 import fastify from "fastify";
 import {Controller} from "./controller";
 
