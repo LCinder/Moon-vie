@@ -4,7 +4,7 @@ import {IMovie} from "./IMovie";
 
 
 export class Movies {
-     private readonly _movies: any;
+     private readonly _movies;
 
     constructor() {
         this._movies = movies;
@@ -27,15 +27,15 @@ export class Movies {
         else
             titleParsed = title.replace(/\s/g, "");
 
-        const matchTitle: any = (element: IMovie) => {
+        const matchTitle = (element: IMovie) => {
             const originalTitleParsed: string = element.original_title.replace(/\s/g, "");
             return originalTitleParsed === titleParsed;
         };
 
-        const containsTitle: any = (element: IMovie) => {
+        const containsTitle = (element: IMovie) => {
             const originalTitleParsed: string = element.original_title.replace(/\s/g, "");
             const elementYear: RegExpMatchArray | null = element.release_date.match(/[0-9]{4}/g);
-            let yearsEqual: boolean = false;
+            let yearsEqual = false;
 
             if (year) {
                 if (elementYear) {
