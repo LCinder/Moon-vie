@@ -63,9 +63,11 @@ export class Movies {
             movie.overview = json.overview;
             movie.popularity = json.popularity;
             movie.voteAverage = json.vote_average;
-            json.reviews.forEach((review: string) => {
-                movie.addReview(movie.removeBadCharacters(review))
-            });
+            if(json.reviews !== undefined) {
+                json.reviews.forEach((review: string) => {
+                    movie.addReview(movie.removeBadCharacters(review))
+                });
+            }
             return movie;
         } else {
             throw new Error("Movie does not exist");
