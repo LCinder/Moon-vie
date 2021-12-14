@@ -76,9 +76,14 @@ y de la clave pública
 
 
 ## :scroll: CI - Integración Continua :scroll:
-- Enlace para acceder a la documentación del [sistema de CI elegido](https://github.com/LCinder/Moon-vie/blob/master/docs/hito4-CI.md)
-- Enlace de documentación de [otros sistemas de CI adicionales - GitHub Actions](https://github.com/LCinder/Moon-vie/blob/master/docs/hito4-CI.md#otros-sistemas-github-actions)
-- Enlace para ver las [conclusiones de sistemas CI](https://github.com/LCinder/Moon-vie/blob/master/docs/hito4-CI.md#conclusi%C3%B3n---cu%C3%A1l-es-mejor)
-  - Enlace al archivo de [configuración de Circle-CI](https://github.com/LCinder/Moon-vie/blob/master/.circleci/config.yml)
-  - Enlace al archivo de [configuración de GitHub-Actions (WorkFlow Lint y Test-Coverage)](https://github.com/LCinder/Moon-vie/blob/master/.github/workflows/check-code.yml)
-  - Enlace al archivo de [configuración de GitHub-Actions (Docker)](https://github.com/LCinder/Moon-vie/blob/master/.github/workflows/docker.yml)
+- Enlace para acceder a toda la [documentación del hito-4 CI](https://github.com/LCinder/Moon-vie/blob/master/docs/hito4.md)
+
+
+## :book: Microservicios :book:
+- Enlace para acceder a [documentación técnica del framework de microservicios](https://github.com/LCinder/Moon-vie/blob/master/docs/hito3.md)
+- Enlace para acceder a [diseño general y rutas del API](https://github.com/LCinder/Moon-vie/blob/master/docs/hito3.md)
+- Enlace para acceder a [documentación del framework de logger](https://github.com/LCinder/Moon-vie/blob/master/docs/hito3.md)
+- Enlace para acceder a [documentación de la configuración distribuida](https://github.com/LCinder/Moon-vie/blob/master/docs/hito3.md)
+- Enlace para acceder a [los tests del API](https://github.com/LCinder/Moon-vie/blob/master/docs/hito3.md)
+
+---
