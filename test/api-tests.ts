@@ -4,7 +4,7 @@ import {assert} from "chai";
 import {server} from "../src/routes";
 
 
-describe("GET /status", () => {
+describe("GET /status", async () => {
     it("Deberia devolver en body 'Ok'", async () => {
         const res = await server.inject({
             url: "/status"
@@ -14,7 +14,7 @@ describe("GET /status", () => {
     });
 });
 
-describe("GET /movies", () => {
+describe("GET /movies", async () => {
     it("Deberia ser un array con varios elementos", async () => {
         const res = await server.inject({
             url: "/movies"
@@ -24,7 +24,7 @@ describe("GET /movies", () => {
     });
 });
 
-describe("GET /movies/Hobbit", () => {
+describe("GET /movies/Hobbit", async () => {
     it("Deberia ser una pelicula", async () => {
         const res = await server.inject({
             url: "/movies/Hobbit(2012)"
@@ -34,7 +34,7 @@ describe("GET /movies/Hobbit", () => {
     });
 });
 
-describe("GET /movies/Hobbit/keywords", () => {
+describe("GET /movies/Hobbit/keywords", async () => {
     it("Deberia devolver un array de palabras clave 'string'", async () => {
         const res = await server.inject({
             url: "/movies/Hobbit(2012)/keywords"
@@ -45,7 +45,7 @@ describe("GET /movies/Hobbit/keywords", () => {
     });
 });
 
-describe("GET /movies/HobbitNoExiste(2012) y GET /movies/HobbitNoExiste(2012)/keywords", () => {
+describe("GET /movies/HobbitNoExiste(2012) y GET /movies/HobbitNoExiste(2012)/keywords", async () => {
     it("Deberia devolver error 404 y mensaje pelicula no existe", async () => {
         const res = await server.inject({
             url: "/movies/HobbitNoExiste(2012)"
