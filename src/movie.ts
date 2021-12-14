@@ -101,13 +101,18 @@ export class Movie {
         allStopWords.concat(stopWords);
         information.push(this._overview);
 
-        information.forEach(element => {
-            ldaElement = lda(element.match( /[^.!?]+[.!?]+/g ), 5, 10, null, null, null, 123);
-            ldaElement[0].forEach((term: { term }) => {
-                if(!allStopWords.includes(term.term))
-                    keywords.push(term.term);
+        if (information !== undefined) {
+            information.forEach(element => {
+                ldaElement = lda(element.match( /[^.!?]+[.!?]+/g ), 5, 10, null, null, null, 123);
+                if (ldaElement[0] !== undefined) {
+                    ldaElement[0].forEach((term: { term }) => {
+                        if(!allStopWords.includes(term.term))
+                            keywords.push(term.term);
+                    });
+                }
             });
-        });
+        }
+
         return keywords;
     }
 
