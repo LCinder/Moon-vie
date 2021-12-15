@@ -5,43 +5,30 @@ import {Movies} from "../src/movies";
 import {Movie} from "../src/movie";
 
 const movies = new Movies();
-const movieObject = movies.find("The Hobbit: An Unexpected Journey");
-const movieObjectYear = movies.find("Hobbit (2012)");
+const movieObject = movies.find("TheHobbit:AnUnexpectedJourney(2012)");
 const movie: Movie = new Movie(movies.convertJSON2Movie(movieObject));
-const movieYear: Movie = new Movie(movies.convertJSON2Movie(movieObjectYear));
-
 
 describe("Quiero obtener informacion de una pelicula", () => {
     describe("Pelicula existe", () => {
         it("Deberia existir", () => {
             assert.exists(movie);
-            assert.exists(movieYear);
         });
         it("Deberia tener propiedad id", () => {
             assert.property(movie, "id");
-            assert.property(movieYear, "id");
         });
         it("Deberia poder ver la overview", () => {
             assert.property(movie, "overview");
             assert.isNotEmpty(movie.overview);
 
-            assert.property(movieYear, "overview");
-            assert.isNotEmpty(movieYear.overview);
         });
         it("Reviews deberia ser un array y no estar vacio", () => {
             assert.isArray(movie.reviews);
             assert.isNotEmpty(movie.reviews);
-            assert.isArray(movieYear.reviews);
-            assert.isNotEmpty(movieYear.reviews);
         });
         it("Vote average deberia ser un nº entre 0 y 10", () => {
             assert.isNumber(movie.voteAverage);
             assert.isAtLeast(movie.voteAverage, 0);
             assert.isAtMost(movie.voteAverage, 10);
-
-            assert.isNumber(movieYear.voteAverage);
-            assert.isAtLeast(movieYear.voteAverage, 0);
-            assert.isAtMost(movieYear.voteAverage, 10);
         });
     });
     describe("Pelicula no existe", () => {
