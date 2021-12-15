@@ -1,6 +1,6 @@
 
 export interface IMovie {
-    id: number,
+    id: string,
     adult: boolean,
     original_language: string,
     original_title: string,
