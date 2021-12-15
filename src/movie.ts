@@ -2,7 +2,7 @@ import lda from "lda";
 import {stopWords} from "./stopWords";
 
 export class Movie {
-    private _id: number;
+    private _id: string;
     private _title: string;
     private _overview: string;
     private _popularity: number;
@@ -18,7 +18,7 @@ export class Movie {
             this._voteAverage = movie.voteAverage;
             this._reviews = movie.reviews;
         } else {
-            this._id = 0;
+            this._id = "";
             this._title = "";
             this._overview = "";
             this._popularity = 0;
@@ -35,11 +35,11 @@ export class Movie {
         this._reviews = value;
     }
 
-    get id(): number {
+    get id(): string {
         return this._id;
     }
 
-    set id(value: number) {
+    set id(value: string) {
         this._id = value;
     }
 
