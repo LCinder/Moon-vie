@@ -1,6 +1,6 @@
 
 export interface IMovie {
-    id: number,
+    id: string,
     adult: boolean,
     original_language: string,
     original_title: string,
@@ -9,7 +9,7 @@ export interface IMovie {
     poster_path: string,
     backdrop_path: string,
     genre_ids: number [],
-    release_date: Date,
+    release_date: string,
     title: string,
     video: boolean,
     vote_average: number,

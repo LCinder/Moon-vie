@@ -22,11 +22,14 @@ gulp.task("transpile-test", () => {
 });
 
 gulp.task("test", () => {
-   return gulp.src("dist/tests.js").pipe(mocha());
+   return gulp.src("dist/*.js").pipe(mocha());
 });
 
 gulp.task("test-ts", (done) => {
     gulp.src("test/tests.ts").pipe(mocha({
+        require: ["ts-node/register"]
+    }));
+    gulp.src("test/api-tests.ts").pipe(mocha({
         require: ["ts-node/register"]
     }));
     done();
@@ -38,12 +41,20 @@ gulp.task("test-ts:coverage", (done) => {
     done();
 });
 
-gulp.task("lint", () => {
-    return gulp.src("**/*.ts")
-        .pipe(eslint({
-            configFile: ".eslintrc"
-        }))
-        .pipe(eslint.format());
+gulp.task("lint", (done) => {
+    gulp.src("test/*.ts")
+    .pipe(eslint({
+        configFile: ".eslintrc"
+    }))
+    .pipe(eslint.format());
+
+    gulp.src("src/*.ts")
+    .pipe(eslint({
+        configFile: ".eslintrc"
+    }))
+    .pipe(eslint.format());
+
+    done();
 });
 
 

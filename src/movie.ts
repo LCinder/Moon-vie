@@ -2,7 +2,7 @@ import lda from "lda";
 import {stopWords} from "./stopWords";
 
 export class Movie {
-    private _id: number;
+    private _id: string;
     private _title: string;
     private _overview: string;
     private _popularity: number;
@@ -18,7 +18,7 @@ export class Movie {
             this._voteAverage = movie.voteAverage;
             this._reviews = movie.reviews;
         } else {
-            this._id = 0;
+            this._id = "";
             this._title = "";
             this._overview = "";
             this._popularity = 0;
@@ -35,11 +35,11 @@ export class Movie {
         this._reviews = value;
     }
 
-    get id(): number {
+    get id(): string {
         return this._id;
     }
 
-    set id(value: number) {
+    set id(value: string) {
         this._id = value;
     }
 
@@ -96,18 +96,23 @@ export class Movie {
         const keywords: string [] = [];
         const information: string[] = this._reviews;
         const allStopWords: string[] = this._title.toLowerCase().split(/[\s,:\-\n]+/);
-        let ldaElement: any[];
+        let ldaElement;
 
         allStopWords.concat(stopWords);
         information.push(this._overview);
 
-        information.forEach(element => {
-            ldaElement = lda(element.match( /[^.!?]+[.!?]+/g ), 5, 10, null, null, null, 123);
-            ldaElement[0].forEach((term: { term: any; }) => {
-                if(!allStopWords.includes(term.term))
-                    keywords.push(term.term);
+        if (information !== undefined) {
+            information.forEach(element => {
+                ldaElement = lda(element.match( /[^.!?]+[.!?]+/g ), 5, 10, null, null, null, 123);
+                if (ldaElement[0] !== undefined) {
+                    ldaElement[0].forEach((term: { term }) => {
+                        if(!allStopWords.includes(term.term))
+                            keywords.push(term.term);
+                    });
+                }
             });
-        });
+        }
+
         return keywords;
     }
 

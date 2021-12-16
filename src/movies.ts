@@ -4,17 +4,20 @@ import {IMovie} from "./IMovie";
 
 
 export class Movies {
-    private _movies: any;
+     private readonly _movies;
 
     constructor() {
         this._movies = movies;
     }
 
-    find(title: string): IMovie {
-        const res: IMovie = this._movies.movies.find((e: { original_title: string; }) => {
-            if(e.original_title === title) {
-                return e;
-            }
+    get movies() {
+        return this._movies;
+    }
+
+    find(id: string): IMovie {
+        const res: IMovie = this._movies.movies.find((element: IMovie) => {
+            if (element.id === id)
+                return element;
         });
         return res;
     }
@@ -27,14 +30,15 @@ export class Movies {
             movie.overview = json.overview;
             movie.popularity = json.popularity;
             movie.voteAverage = json.vote_average;
-            json.reviews.forEach((review: string) => {
-                movie.addReview(movie.removeBadCharacters(review))
-            });
+            if(json.reviews !== undefined) {
+                json.reviews.forEach((review: string) => {
+                    movie.addReview(movie.removeBadCharacters(review))
+                });
+            }
             return movie;
         } else {
             throw new Error("Movie does not exist");
         }
-
     }
 
 }

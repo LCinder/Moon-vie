@@ -5,9 +5,8 @@ import {Movies} from "../src/movies";
 import {Movie} from "../src/movie";
 
 const movies = new Movies();
-const movieObject = movies.find("The Hobbit: An Unexpected Journey");
+const movieObject = movies.find("TheHobbit:AnUnexpectedJourney(2012)");
 const movie: Movie = new Movie(movies.convertJSON2Movie(movieObject));
-
 
 describe("Quiero obtener informacion de una pelicula", () => {
     describe("Pelicula existe", () => {
@@ -20,6 +19,7 @@ describe("Quiero obtener informacion de una pelicula", () => {
         it("Deberia poder ver la overview", () => {
             assert.property(movie, "overview");
             assert.isNotEmpty(movie.overview);
+
         });
         it("Reviews deberia ser un array y no estar vacio", () => {
             assert.isArray(movie.reviews);
