@@ -30,7 +30,8 @@ gulp.task("test-ts", (done) => {
         require: ["ts-node/register"]
     }));
     gulp.src("test/api-tests.ts").pipe(mocha({
-        require: ["ts-node/register"]
+        require: ["ts-node/register"],
+        timeout: 7000
     }));
     done();
 });
