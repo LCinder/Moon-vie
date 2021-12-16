@@ -7,5 +7,4 @@ test:
   - test/tests.ts
 fichero_tareas:
   - gulpfile.js
-make:
-  - gulp test-ts
+make: gulp
