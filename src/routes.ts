@@ -18,7 +18,7 @@ const controller = new Controller();
 /**********************************************************************************************************************/
 /**********************************************************************************************************************/
 server.get("/status", async (request, reply) => {
-    reply.code(200).send(JSON.stringify("{status: Ok}"));
+    reply.code(200).send(JSON.stringify("status: Ok"));
 });
 /**********************************************************************************************************************/
 /**********************************************************************************************************************/
@@ -55,7 +55,7 @@ server.get("/movies/:movie/keywords", async (request: any, reply) => {
         reply.code(200).send(JSON.stringify(keywords));
     } catch(err: any) {
         request.log.error(`${err.message} : ${request.params.movie}`);
-        reply.code(404).send(JSON.stringify({error: err.message, code: 404}));
+        reply.code(404).send(JSON.stringify(err.message));
     }
 });
 /**********************************************************************************************************************/
