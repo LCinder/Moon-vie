@@ -25,10 +25,10 @@ server.get("/status", async (request, reply) => {
 server.get("/movies", async (request, reply) => {
     try {
         request.log.info("Movies sent");
-        reply.code(200).send(controller.movies);
+        reply.code(200).send(JSON.stringify((controller.movies)));
     } catch(err: any) {
         request.log.error(err.message);
-        reply.code(400).send({error: err.message, code: 400});
+        reply.code(400).send(JSON.stringify(err.message));
     }
 });
 /**********************************************************************************************************************/
@@ -40,8 +40,8 @@ server.get("/movies/:movie", async (request: any, reply) => {
         request.log.info(`Movie ${movie.title} sent`);
         reply.code(200).send(JSON.stringify(movie));
     } catch(err: any) {
-        request.log.error(`${err.message} : ${request.params.movie}`);
-        reply.code(404).send({error: err.message, code: 404});
+        request.log.error(JSON.stringify((`${err.message} : ${request.params.movie}`)));
+        reply.code(404).send(JSON.stringify(err.message));
     }
 });
 /**********************************************************************************************************************/
