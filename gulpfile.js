@@ -25,12 +25,14 @@ gulp.task("test-transpile", () => {
    return gulp.src("dist/*.js").pipe(mocha());
 });
 
-gulp.task("build", () => {
+gulp.task("build", (done) => {
     // No hace nada
+    done();
 });
 
-gulp.task("install", () => {
+gulp.task("install", (done) => {
     // No hace nada
+    done();
 });
 
 gulp.task("test", (done) => {
