@@ -15,9 +15,9 @@ export class Movies {
     }
 
     find(id: string): IMovie {
-        const res: IMovie = this._movies.movies.find((e: IMovie) => {
-            if (e.id === id)
-                return e;
+        const res: IMovie = this._movies.movies.find((element: IMovie) => {
+            if (element.id === id)
+                return element;
         });
         return res;
     }
