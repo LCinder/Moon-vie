@@ -21,11 +21,19 @@ gulp.task("transpile-test", () => {
         .pipe(gulp.dest("dist/"));
 });
 
-gulp.task("test", () => {
+gulp.task("test-transpile", () => {
    return gulp.src("dist/*.js").pipe(mocha());
 });
 
-gulp.task("test-ts", (done) => {
+gulp.task("build", () => {
+    // No hace nada
+});
+
+gulp.task("install", () => {
+    // No hace nada
+});
+
+gulp.task("test", (done) => {
     gulp.src("test/tests.ts").pipe(mocha({
         require: ["ts-node/register"]
     }));
