@@ -45,20 +45,20 @@ describe("GET /movies/TheHobbit:AnUnexpectedJourney(2012)/keywords", async () =>
     });
 });
 
-describe("GET /movies/HobbitNoExiste(2012) y GET /movies/HobbitNoExiste(2012)/keywords",() => {
+describe("GET /movies/HobbitNoExiste(2012) y GET /movies/HobbitNoExiste(2012)/keywords", async() => {
     it("Deberia devolver error 404 y mensaje pelicula no existe", async () => {
         const res = await server.inject({
             url: "/movies/HobbitNoExiste(2012)"
         });
-        assert.equal(JSON.parse(res.body).error, "Movie does not exist");
+        assert.equal(JSON.parse(res.body), "Movie does not exist");
         assert.equal(res.statusCode, 404);
     });
 
-    it("Deberia devolver error 404 y keywords de pelicula no existe", async (done) => {
+    it("Deberia devolver error 404 y keywords de pelicula no existe", async () => {
         const res = await server.inject({
             url: "/movies/HobbitNoExiste(2012)/keywords"
         });
-        assert.equal(JSON.parse(res.body).error, "Movie does not exist");
+        assert.equal(JSON.parse(res.body), "Movie does not exist");
         assert.equal(res.statusCode, 404);
     });
 });
