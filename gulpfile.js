@@ -43,6 +43,9 @@ gulp.task("test", (done) => {
         require: ["ts-node/register"],
         timeout: 10000
     }));
+    gulp.src("test/etcd-tests.ts").pipe(mocha({
+        require: ["ts-node/register"]
+    }));
     done();
 });
 
