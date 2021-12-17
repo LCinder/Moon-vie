@@ -182,8 +182,8 @@ a la petición realizada, las cuáles son:
 - `/movies`: Devuelve un array con todas las películas disponibles con la información de cada una(descripción, reviews, título, etc.)
 - `/movies/:movie` _(HU4)_: Devuelve una película específica indicando su título y/o año. **IMPORTANTE:** Debido a la utilización de un archivo
 _json_ como recuperación de información, cada película vendrá descrita y localizada por un **id único,**
-el cuál  será el título (completo o parcial) junto con el año del estreno. Es decir, `The Hobbit: An Unexpected Journey(2012)`
-y `Hobbit(2012)` corresponden a la misma película, mientras que `Hobbit(2014)` corresponde a una película diferente.
+el cuál será el título completo (sin espacios) junto con el año del estreno. Es decir, `TheHobbit:AnUnexpectedJourney(2012)`
+es una película, mientras que `Hobbit(2012)` no es una película.
 - `/movies/:movie/keywords` _(HU3)_ : Devuelve un array con las palabras clave que definen a la película (recordemos que se extraían
 mediante *lda* tanto de las reviews como de la descripción de la película)
 
@@ -207,8 +207,39 @@ una configuración compartida, entre otros. Se establece
 en [etcd-service.ts](https://github.com/LCinder/Moon-vie/blob/master/src/etcd-service.ts)
 y se exporta la configuración de manera `export ETCDCTL_API=3` para que el cliente funcione.
 
+Nos permite centralizar la configuración garantizando la seguridad, consistencia y tolerancia a fallos.
+Es además rápida y fiable. Nos servirá en el hito siguiente para la composición de contenedores,
+por lo que probablemente tendremos que extender su funcionalidad más específicamente, pero por ahora
+crearemos una clave `HOST:PORT` para iniciarnos en la configuración y comprobar que funciona de manera básica.
 
+Se han realizado además tests para comprobar el correcto funcionamiento básico de la configuración
+distribuida, en el archivo [etcd-tests.ts](https://github.com/LCinder/Moon-vie/blob/master/test/etcd-tests.ts)
+donde se han realizado los test siguientes
 
+```
+describe("Test basicos Etcd3", async () => {
+    let service: EtcdService = new EtcdService();
+    it("Deberia existir",() => {
+        assert.exists(service);
+    });
+    it("Deberia devolver un cliente", () => {
+        const res = service.client;
+        assert.instanceOf(res, Etcd3);
+    });
+    it("Deberia funcionar etcd3", async () => {
+        const key: string = "Testing";
+        const expected: string = "Ok";
+        process.env[key] = expected;
+
+        const res = await service.get(key);
+        assert.equal(res, expected);
+    });
+});
+```
+
+Y vemos cómo pasan los test correctamente:
+
+![Test etcd funcionan](https://github.com/LCinder/Moon-vie/blob/master/docs/img/tests-etcd-funciona.PNG)
 
 ---
 
@@ -271,7 +302,7 @@ la cuál se trata de `inject,` que permite comprobar el funcionamiento de la _AP
 de levantar un servidor, testeando las rutas como funciones pasando por argumento un _url_ de la ruta de la forma:
 ```
 const res = await server.inject({
-    url: "/movies/Hobbit(2012)/keywords"
+    url: "/movies/TheHobbit:AnUnexpectedJourney(2012)/keywords"
 });
 ```
 
