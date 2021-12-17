@@ -28,7 +28,7 @@ server.get("/movies", async (request, reply) => {
         reply.code(200).send(JSON.stringify((controller.movies)));
     } catch(err: any) {
         request.log.error(err.message);
-        reply.code(400).send(JSON.stringify(err.message));
+        reply.code(404).send(JSON.stringify(err.message));
     }
 });
 /**********************************************************************************************************************/
