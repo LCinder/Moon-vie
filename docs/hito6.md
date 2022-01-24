@@ -114,10 +114,15 @@ que hicimos en el hito 3, y al ejecutar `docker-compose up` si no tenemos descar
 se descargarán automáticamente y se ejecutarán de igual manera que antes, es decir, no es necesario subir
 la composición de los contenedores tal cual, sino que se tratan por separado y se descargan y ejecutan a la vez.
 
+##Terminación proyecto
+
 Como funcionalidad extra para la terminación del proyecto, se ha avanzado en la HU4 que permite extraer el
 _sentimiento_ de una película, es decir, un porcentaje de positividad/negatividad que se obtiene de los comentarios 
-y la review de la película. Para ello se ha creado la ruta _/sentiment_ que está accesible para cada película, de forma 
+y la descripción de la película. Para ello se ha creado la ruta _/sentiment_ que está accesible para cada película, de forma 
 que se devuelven 2 nºs que indica el porcentaje de positividad/negatividad de una película.
+Esto se ha realizado con una biblioteca llamada _sentiment_ que devuelve un _score_ con la puntuación de la película,
+pasándole un _string_ que en este caso son las reviews y la descripción comentadas anteriormente. Se realiza en la clase
+_movie.ts_
 
 Como se ve en la siguiente imagen, para la película _Tenet_ se obtiene un 67% de buenas críticas y un 33% de malas críticas,
 que junto con las palabras claves de la película, permite conocer a primera vista la información de cómo de buena es la misma,
