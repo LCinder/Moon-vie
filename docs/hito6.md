@@ -113,3 +113,14 @@ La forma de desplegarlo es, por ejemplo, subirlo a DockerHub o a GitHub Containe
 que hicimos en el hito 3, y al ejecutar `docker-compose up` si no tenemos descargadas las imágenes, 
 se descargarán automáticamente y se ejecutarán de igual manera que antes, es decir, no es necesario subir
 la composición de los contenedores tal cual, sino que se tratan por separado y se descargan y ejecutan a la vez.
+
+Como funcionalidad extra para la terminación del proyecto, se ha avanzado en la HU4 que permite extraer el
+_sentimiento_ de una película, es decir, un porcentaje de positividad/negatividad que se obtiene de los comentarios 
+y la review de la película. Para ello se ha creado la ruta _/sentiment_ que está accesible para cada película, de forma 
+que se devuelven 2 nºs que indica el porcentaje de positividad/negatividad de una película.
+
+Como se ve en la siguiente imagen, para la película _Tenet_ se obtiene un 67% de buenas críticas y un 33% de malas críticas,
+que junto con las palabras claves de la película, permite conocer a primera vista la información de cómo de buena es la misma,
+terminando así el proyecto iniciado en la asignatura
+
+![sentiment](https://github.com/LCinder/Moon-vie/blob/master/docs/img/sentiment.PNG)
