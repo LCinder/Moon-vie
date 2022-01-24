@@ -40,13 +40,13 @@ gulp.task("install", (done) => {
 });
 
 gulp.task("test", (done) => {
-    gulp.src("test/tests.ts").pipe(mocha({
+    /*gulp.src("test/tests.ts").pipe(mocha({
         require: ["ts-node/register"]
     }));
     gulp.src("test/api-tests.ts").pipe(mocha({
         require: ["ts-node/register"],
         timeout: 10000
-    }));
+    }));*/
     gulp.src("test/etcd-tests.ts").pipe(mocha({
         require: ["ts-node/register"]
     }));
