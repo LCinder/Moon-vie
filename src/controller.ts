@@ -13,8 +13,9 @@ export class Controller {
         return this._movies;
     }
 
-    getMovie(title: string): Movie {
-        return this._movies.convertJSON2Movie(this._movies.find(title));
+    async getMovie(title: string) {
+        const movie = await this._movies.findDb(title);
+        return this._movies.convertJSON2Movie(movie);
     }
 
     getKeywords(movie: Movie): string[] {
