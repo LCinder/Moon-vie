@@ -45,6 +45,7 @@
     "nyc": "^15.1.0",
     "pino-pretty": "^7.2.0",
     "rake-js": "^0.1.1",
+    "sentiment": "^5.0.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   }
