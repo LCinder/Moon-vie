@@ -4,7 +4,7 @@
 ***
 
 ```
-IMPORTANTE: Esta práctica, al ser opcional, se desarrolla de manera esquemática
+IMPORTANTE: Esta práctica, al ser opcional, se ha desarrollado y explicado esquemáticamente
 ```
 
 ## Composición cluster
@@ -13,7 +13,7 @@ Para la composición del cluster se han determinado que se necesitan, al menos 2
 - Para la base de datos
 - Pare el servicio desarrollado hasta el hito 5 (microservicio)
 
-Para ello, se ha creado un archivo [docker-compose.yml]() que contiene lo siguiente:
+Para ello, se ha creado un archivo [docker-compose.yml](https://github.com/LCinder/Moon-vie/blob/master/docker-compose.yml)) que contiene lo siguiente:
 
 ```
 version: '3.8'
@@ -107,3 +107,9 @@ desde la BBDD `mongodb` y comprobamos como al lanzarlo se ejecutan los contenedo
 
 
 ![hito6Funciona](https://github.com/LCinder/Moon-vie/blob/master/docs/img/hito6Funciona.PNG)
+
+
+La forma de desplegarlo es, por ejemplo, subirlo a DockerHub o a GitHub Container Registry al igual
+que hicimos en el hito 3, y al ejecutar `docker-compose up` si no tenemos descargadas las imágenes, 
+se descargarán automáticamente y se ejecutarán de igual manera que antes, es decir, no es necesario subir
+la composición de los contenedores tal cual, sino que se tratan por separado y se descargan y ejecutan a la vez.
