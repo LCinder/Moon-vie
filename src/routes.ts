@@ -62,4 +62,18 @@ server.get("/movies/:movie/keywords", async (request: any, reply) => {
 });
 /**********************************************************************************************************************/
 /**********************************************************************************************************************/
+server.get("/movies/:movie/sentiment", async (request: any, reply) => {
+    try {
+        const movie: Movie = await controller.getMovie(request.params.movie);
+        const sentiment: number[] = controller.getSentiment(movie);
+
+        request.log.info(`Extracted and sent sentiment from movie ${movie.title}`);
+        reply.code(200).send(JSON.stringify(sentiment));
+    } catch(err: any) {
+        request.log.error(`${err.message} : ${request.params.movie}`);
+        reply.code(404).send(JSON.stringify(err.message));
+    }
+});
+/**********************************************************************************************************************/
+/**********************************************************************************************************************/
 server.listen(5002)
