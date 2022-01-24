@@ -13,7 +13,7 @@ Para la composición del cluster se han determinado que se necesitan, al menos 2
 - Para la base de datos
 - Pare el servicio desarrollado hasta el hito 5 (microservicio)
 
-Para ello, se ha creado un archivo [docker-compose.yml](https://github.com/LCinder/Moon-vie/blob/master/docker-compose.yml)) que contiene lo siguiente:
+Para ello, se ha creado un archivo [docker-compose.yml](https://github.com/LCinder/Moon-vie/blob/master/docker-compose.yml) que contiene lo siguiente:
 
 ```
 version: '3.8'
