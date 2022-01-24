@@ -21,4 +21,8 @@ export class Controller {
     getKeywords(movie: Movie): string[] {
         return movie.extractKeywords();
     }
+
+    getSentiment(movie: Movie): number[] {
+        return movie.extractSentiment();
+    }
 }
