@@ -25,6 +25,10 @@ gulp.task("test-transpile", () => {
    return gulp.src("dist/*.js").pipe(mocha());
 });
 
+gulp.task("run-server", () => {
+    return gulp.src("src/routes.ts").pipe(shell("node dist/routes.js"));
+});
+
 gulp.task("build", (done) => {
     // No hace nada
     done();
@@ -71,5 +75,6 @@ gulp.task("lint", (done) => {
     done();
 });
 
+gulp.task("server", gulp.series("default", "run-server"));
 
 gulp.task("tests", gulp.series("default", "transpile-test", "test"));
