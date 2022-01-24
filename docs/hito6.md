@@ -114,7 +114,7 @@ que hicimos en el hito 3, y al ejecutar `docker-compose up` si no tenemos descar
 se descargarán automáticamente y se ejecutarán de igual manera que antes, es decir, no es necesario subir
 la composición de los contenedores tal cual, sino que se tratan por separado y se descargan y ejecutan a la vez.
 
-##Terminación proyecto
+## Terminación proyecto
 
 Como funcionalidad extra para la terminación del proyecto, se ha avanzado en la HU4 que permite extraer el
 _sentimiento_ de una película, es decir, un porcentaje de positividad/negatividad que se obtiene de los comentarios 
