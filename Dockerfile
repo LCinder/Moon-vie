@@ -20,8 +20,8 @@ FROM base_image
 COPY --from=install /node_modules /node_modules
 
 # Se cambia el directorio de trabajo
-WORKDIR /app/test
+#WORKDIR /app/test
 
 ENV PATH=/node_modules/.bin:$PATH
 
-CMD ["gulp", "test"]
+CMD ["gulp", "server"]

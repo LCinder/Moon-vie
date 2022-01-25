@@ -25,7 +25,9 @@ server.get("/status", async (request, reply) => {
 server.get("/movies", async (request, reply) => {
     try {
         request.log.info("Movies sent");
-        reply.code(200).send(JSON.stringify((controller.movies)));
+
+        const movies: Movie = await controller.getMovie("");
+        reply.code(200).send(JSON.stringify(movies));
     } catch(err: any) {
         request.log.error(err.message);
         reply.code(404).send(JSON.stringify(err.message));
@@ -35,7 +37,7 @@ server.get("/movies", async (request, reply) => {
 /**********************************************************************************************************************/
 server.get("/movies/:movie", async (request: any, reply) => {
     try {
-        const movie: Movie = controller.getMovie(request.params.movie);
+        const movie: Movie = await controller.getMovie(request.params.movie);
 
         request.log.info(`Movie ${movie.title} sent`);
         reply.code(200).send(JSON.stringify(movie));
@@ -48,7 +50,7 @@ server.get("/movies/:movie", async (request: any, reply) => {
 /**********************************************************************************************************************/
 server.get("/movies/:movie/keywords", async (request: any, reply) => {
     try {
-        const movie: Movie = controller.getMovie(request.params.movie);
+        const movie: Movie = await controller.getMovie(request.params.movie);
         const keywords: string[] = controller.getKeywords(movie);
 
         request.log.info(`Extracted and sent keywords from movie ${movie.title}`);
@@ -60,4 +62,18 @@ server.get("/movies/:movie/keywords", async (request: any, reply) => {
 });
 /**********************************************************************************************************************/
 /**********************************************************************************************************************/
-//server.listen(5002)
+server.get("/movies/:movie/sentiment", async (request: any, reply) => {
+    try {
+        const movie: Movie = await controller.getMovie(request.params.movie);
+        const sentiment: number[] = controller.getSentiment(movie);
+
+        request.log.info(`Extracted and sent sentiment from movie ${movie.title}`);
+        reply.code(200).send(JSON.stringify(sentiment));
+    } catch(err: any) {
+        request.log.error(`${err.message} : ${request.params.movie}`);
+        reply.code(404).send(JSON.stringify(err.message));
+    }
+});
+/**********************************************************************************************************************/
+/**********************************************************************************************************************/
+server.listen(5002)

@@ -5,3 +5,4 @@ node_modules
 src/environment.ts
 .nyc_output
 dist/
+src/index.ts

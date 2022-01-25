@@ -1,4 +1,5 @@
 import lda from "lda";
+let Sentiment = require("sentiment");
 import {stopWords} from "./stopWords";
 
 export class Movie {
@@ -114,6 +115,37 @@ export class Movie {
         }
 
         return keywords;
+    }
+
+    extractSentiment(): number[] {
+        let res: number[] = [];
+        const sentiment = new Sentiment();
+        let score: number = 0;
+        let positive: number = 0;
+        let negative: number = 0;
+        let positiveScore: number = 0;
+        let negativeScore: number = 0;
+
+        this._reviews.forEach((review) => {
+            score = sentiment.analyze(review).score;
+            if (score > 0) {
+                positive += 1;
+                positiveScore += score;
+            }
+            else {
+                negative += 1;
+                negativeScore += score;
+            }
+        });
+
+        const positivePercentage: number = Math.round(100*positive/(positive + negative));
+        const negativePercentage: number = Math.round(100*negative/(positive + negative));
+        console.log(`positive: ${positive}, positiveScore: ${positiveScore}`)
+        console.log(`negative: ${negative}, negativeScore: ${negativeScore}`)
+        console.log(`positive(%): ${positivePercentage}, negative(%): ${negativePercentage}`)
+        res.push(positivePercentage);
+        res.push(negativePercentage);
+        return res;
     }
 
 }
